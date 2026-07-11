@@ -1,8 +1,7 @@
 import Link from "next/link";
 import { FinalVerdictBadge } from "@/components/FinalVerdictBadge";
 
-// TODO: point at the real GeneGround repository once it's public.
-const GITHUB_URL = "#";
+const GITHUB_URL = "https://github.com/rheazhou2026/geneground";
 
 const NAV_LINKS = [
   { href: "#product", label: "Product" },
@@ -90,6 +89,8 @@ export default function Home() {
             ))}
             <a
               href={GITHUB_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="hidden items-center gap-1.5 text-sm text-zinc-500 transition-colors hover:text-zinc-900 sm:inline-flex dark:text-zinc-400 dark:hover:text-zinc-100"
             >
               <GitHubIcon className="h-4 w-4" />
@@ -127,6 +128,8 @@ export default function Home() {
             </Link>
             <a
               href={GITHUB_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-lg border border-zinc-200 px-5 py-2.5 text-sm font-medium text-zinc-700 transition-colors hover:border-zinc-400 hover:text-zinc-900 dark:border-zinc-700 dark:text-zinc-300 dark:hover:border-zinc-500 dark:hover:text-zinc-100"
             >
               <GitHubIcon className="h-4 w-4" />
