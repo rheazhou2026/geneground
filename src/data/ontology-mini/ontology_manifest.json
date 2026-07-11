@@ -1,0 +1,72 @@
+{
+  "schema": "ontology_manifest.v1",
+  "build_timestamp": "2026-07-11T05:28:07.070Z",
+  "description": "Manifest for GeneGround's mini ontology layer (Step 4: mini ontology-based entity normalization). This is a lightweight MVP normalization layer, not a full ontology reasoner — it resolves common gene/cell/pathway aliases to canonical labels and dataset-specific terms, but does not perform formal ontology reasoning, cross-ontology ID mapping, or evidence verification.",
+  "source_files": [
+    {
+      "file": "raw-ontology/hgnc/hgnc_complete_set.json",
+      "bytes": 33054017
+    },
+    {
+      "file": "raw-ontology/cell-ontology/cl-basic.json",
+      "bytes": 6021298
+    },
+    {
+      "file": "raw-ontology/reactome/ReactomePathways.txt",
+      "bytes": 1592393
+    },
+    {
+      "file": "raw-ontology/reactome/ReactomePathwaysRelation.txt",
+      "bytes": 634259
+    },
+    {
+      "file": "raw-ontology/reactome/ReactomePathways.gmt",
+      "bytes": 1032186
+    }
+  ],
+  "source_descriptions": {
+    "hgnc_complete_set": "HUGO Gene Nomenclature Committee (HGNC) complete gene set — approved symbols, names, aliases, and previous symbols for human genes.",
+    "cell_ontology": "Cell Ontology (CL) basic release, OBOGraph JSON — structured vocabulary of cell types and states.",
+    "reactome_pathways": "Reactome pathway ID-to-name-to-species table (all species).",
+    "reactome_pathways_relation": "Reactome parent-child pathway hierarchy relations (all species).",
+    "reactome_gmt": "Reactome pathway gene sets in GMT format (Homo sapiens only)."
+  },
+  "mini_ontology_files": [
+    {
+      "file": "genes.hgnc.mini.json",
+      "description": "Focused HGNC subset: 45 genes (curated immune/T-cell panel + genes referenced in existing GeneGround mock evidence), with alias and previous-symbol resolution."
+    },
+    {
+      "file": "cell_ontology.cl.mini.json",
+      "description": "Cell Ontology terms relevant to immune/T-cell context (376 CL terms) plus 6 curated fallback entries for phrasings/cell states not present verbatim in CL."
+    },
+    {
+      "file": "pathways.reactome.mini.json",
+      "description": "Reactome Homo sapiens pathways filtered to immune/signaling keyword groups (131 pathways, 131 with gene sets attached)."
+    },
+    {
+      "file": "signatures.immune_curated.mini.json",
+      "description": "Hand-curated MVP gene signatures for common immune/T-cell response programs (not derived from a formal gene set database)."
+    },
+    {
+      "file": "dataset_terms.geneground.json",
+      "description": "GeneGround demo-dataset-specific condition, perturbation-type, and direction term normalization (CD4+ T cell Perturb-seq: Rest / Stim8hr / Stim48hr, CRISPRi-based)."
+    },
+    {
+      "file": "ontology_manifest.json",
+      "description": "This manifest."
+    }
+  ],
+  "warnings_and_caveats": [
+    "Gene coverage is a focused subset (not the full ~45k HGNC gene set) — genes outside this panel will not resolve and should be treated as unnormalized.",
+    "Cell Ontology coverage is filtered to nodes whose label or synonyms match immune/T-cell-related keywords; the full CL hierarchy above/below these terms is not included, and some parent_ids reference CL nodes outside this mini ontology's own id_to_term.",
+    "Several cell-context entries (e.g., 'CD4+ T cell', 'activated T cell', 'Th1-like polarization state') are curated fallbacks, not verbatim Cell Ontology synonyms — see each entry's `caveat` field.",
+    "'Th1-like polarization state' and 'Th2-like polarization state' are transcriptional cell STATES inferred from Perturb-seq analysis, not formal Cell Ontology classes.",
+    "Reactome pathways are filtered to Homo sapiens and a keyword-matched immune/signaling subset; most of Reactome's human pathways are excluded from this mini ontology.",
+    "Curated immune signatures are hand-assembled for this MVP demo and are not sourced from MSigDB or a peer-reviewed gene set collection; treat them as illustrative, not evidence-grade.",
+    "Dataset-specific terms (Rest / Stim8hr / Stim48hr, CRISPRi_knockdown) are specific to the GeneGround CD4+ T cell Perturb-seq demo dataset and do not generalize to other datasets.",
+    "'Stimulated' is intentionally ambiguous between Stim8hr and Stim48hr — normalization surfaces this ambiguity rather than guessing a timepoint.",
+    "'Knockout' / 'knock out' language is flagged with possible_knockout_language_warning because the demo dataset uses CRISPRi knockdown, not true knockout — this is a deliberate mismatch check, not a resolved normalization.",
+    "This is a lightweight MVP normalization layer, not a full ontology reasoner: no OWL reasoning, no cross-ontology ID mapping beyond what HGNC already provides, and no confidence scoring."
+  ]
+}

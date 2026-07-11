@@ -1,0 +1,98 @@
+[
+  {
+    "target_gene_symbol": "STAT1",
+    "culture_condition": "Stim8hr",
+    "n_total_de_genes": 240,
+    "n_up_genes": 80,
+    "n_down_genes": 160,
+    "ontarget_effect_size": -6.8,
+    "ontarget_significant": true,
+    "top_upregulated_genes": [],
+    "top_downregulated_genes": ["IFIT1", "ISG15", "MX1"],
+    "adjusted_p_value_summary": "available in source packet"
+  },
+  {
+    "target_gene_symbol": "IRF1",
+    "culture_condition": "Stim8hr",
+    "n_total_de_genes": 96,
+    "n_up_genes": 30,
+    "n_down_genes": 66,
+    "ontarget_effect_size": -4.2,
+    "ontarget_significant": true,
+    "top_upregulated_genes": ["SOCS1"],
+    "top_downregulated_genes": ["CXCL10", "IL1B", "GBP1"],
+    "adjusted_p_value_summary": "available in source packet"
+  },
+  {
+    "target_gene_symbol": "IRF4",
+    "culture_condition": "Stim48hr",
+    "n_total_de_genes": 150,
+    "n_up_genes": 70,
+    "n_down_genes": 80,
+    "ontarget_effect_size": -3.1,
+    "ontarget_significant": true,
+    "top_upregulated_genes": ["TBX21", "IFNG"],
+    "top_downregulated_genes": ["GATA3", "IL4", "MAF"],
+    "adjusted_p_value_summary": "available in source packet"
+  },
+  {
+    "target_gene_symbol": "BATF",
+    "culture_condition": "Stim8hr",
+    "n_total_de_genes": 58,
+    "n_up_genes": 22,
+    "n_down_genes": 36,
+    "ontarget_effect_size": -2.0,
+    "ontarget_significant": true,
+    "top_upregulated_genes": ["TOX"],
+    "top_downregulated_genes": ["IL2", "IL2RA"],
+    "adjusted_p_value_summary": "available in source packet, borderline for several genes"
+  },
+  {
+    "target_gene_symbol": "JUN",
+    "culture_condition": "Stim8hr",
+    "n_total_de_genes": 110,
+    "n_up_genes": 40,
+    "n_down_genes": 70,
+    "ontarget_effect_size": -3.6,
+    "ontarget_significant": true,
+    "top_upregulated_genes": ["FOSB"],
+    "top_downregulated_genes": ["IL2", "CD69", "EGR2"],
+    "adjusted_p_value_summary": "available in source packet"
+  },
+  {
+    "target_gene_symbol": "FOS",
+    "culture_condition": "Stim8hr",
+    "n_total_de_genes": 95,
+    "n_up_genes": 35,
+    "n_down_genes": 60,
+    "ontarget_effect_size": -3.0,
+    "ontarget_significant": true,
+    "top_upregulated_genes": ["JUNB"],
+    "top_downregulated_genes": ["CD69", "EGR1", "NR4A1"],
+    "adjusted_p_value_summary": "available in source packet"
+  },
+  {
+    "target_gene_symbol": "NFKB1",
+    "culture_condition": "Stim8hr",
+    "n_total_de_genes": 130,
+    "n_up_genes": 45,
+    "n_down_genes": 85,
+    "ontarget_effect_size": -4.5,
+    "ontarget_significant": true,
+    "top_upregulated_genes": ["IKBKB"],
+    "top_downregulated_genes": ["TNF", "IL1B", "NFKBIA"],
+    "adjusted_p_value_summary": "available in source packet"
+  },
+  {
+    "target_gene_symbol": "RELA",
+    "culture_condition": "Stim8hr",
+    "n_total_de_genes": 120,
+    "n_up_genes": 42,
+    "n_down_genes": 78,
+    "ontarget_effect_size": -4.1,
+    "ontarget_significant": true,
+    "top_upregulated_genes": ["RELB"],
+    "top_downregulated_genes": ["TNF", "IL6", "CXCL8"],
+    "adjusted_p_value_summary": "available in source packet"
+  }
+]

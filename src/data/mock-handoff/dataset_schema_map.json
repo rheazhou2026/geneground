@@ -1,0 +1,28 @@
+{
+  "dataset_label": "Primary Human CD4+ T Cell Perturb-seq (Virtual Cell Models)",
+  "modality": "scRNA-seq CRISPRi Perturb-seq",
+  "cell_type": "Primary human CD4+ T cells",
+  "perturbation_method": "CRISPRi (dCas9-KRAB) knockdown",
+  "conditions": ["Rest", "Stim8hr", "Stim48hr"],
+  "donors": 3,
+  "guides_per_gene_target": "2-4 sgRNAs",
+  "readout": "10x scRNA-seq, pseudobulk differential expression per guide/donor",
+  "fields": {
+    "target_gene_symbol": "HGNC-approved gene symbol targeted by the CRISPRi guide",
+    "culture_condition": "Rest | Stim8hr | Stim48hr",
+    "n_total_de_genes": "Count of significantly differentially expressed genes vs. non-targeting control",
+    "ontarget_effect_size": "log2 fold-change of the target gene itself in perturbed vs. control cells",
+    "donor_robustness_score": "Fraction of donors (0-1) showing a concordant effect direction",
+    "guide_robustness_score": "Fraction of guides (0-1) per gene showing a concordant effect direction"
+  },
+  "filtering_thresholds": {
+    "de_adjusted_p_value": "< 0.05",
+    "minimum_guides_per_gene": 2,
+    "minimum_donors": 2
+  },
+  "caveats": [
+    "Pseudobulk aggregation can mask single-cell heterogeneity within a condition.",
+    "CRISPRi knockdown is partial repression, not a true genetic knockout — residual target expression is possible.",
+    "Effect sizes are computed against a pooled non-targeting control guide set, not a gene-matched control."
+  ]
+}

@@ -1,0 +1,170 @@
+{
+  "schema": "signatures.immune_curated.mini.v1",
+  "generated_at": "2026-07-11T05:28:07.070Z",
+  "source": "curated_mvp_signature (hand-assembled for GeneGround demo)",
+  "signatures": [
+    {
+      "signature_id": "interferon_alpha_response",
+      "display_name": "Interferon alpha response",
+      "aliases": [
+        "IFN-alpha response",
+        "interferon alpha signature",
+        "type I interferon response"
+      ],
+      "genes": [
+        "STAT1",
+        "STAT2",
+        "IRF1",
+        "MX1",
+        "OAS1"
+      ],
+      "source": "curated_mvp_signature",
+      "caveat": "Hand-curated for this MVP demo; not sourced from MSigDB or a peer-reviewed gene set collection."
+    },
+    {
+      "signature_id": "interferon_gamma_response",
+      "display_name": "Interferon gamma response",
+      "aliases": [
+        "IFN-gamma response",
+        "interferon gamma signature",
+        "type II interferon response"
+      ],
+      "genes": [
+        "STAT1",
+        "IRF1",
+        "IFNG"
+      ],
+      "source": "curated_mvp_signature",
+      "caveat": "Hand-curated for this MVP demo; not sourced from MSigDB or a peer-reviewed gene set collection."
+    },
+    {
+      "signature_id": "inflammatory_response",
+      "display_name": "Inflammatory response",
+      "aliases": [
+        "inflammation signature",
+        "inflammatory activation"
+      ],
+      "genes": [
+        "NFKB1",
+        "RELA",
+        "TNF",
+        "IL1B",
+        "NLRP3"
+      ],
+      "source": "curated_mvp_signature",
+      "caveat": "Hand-curated for this MVP demo; not sourced from MSigDB or a peer-reviewed gene set collection."
+    },
+    {
+      "signature_id": "tnf_nfkB_signaling",
+      "display_name": "TNF / NF-κB signaling",
+      "aliases": [
+        "TNF-NF-kB signaling",
+        "NF-kB signature",
+        "NF-kappaB signaling"
+      ],
+      "genes": [
+        "TNF",
+        "NFKB1",
+        "RELA"
+      ],
+      "source": "curated_mvp_signature",
+      "caveat": "Hand-curated for this MVP demo; not sourced from MSigDB or a peer-reviewed gene set collection."
+    },
+    {
+      "signature_id": "t_cell_activation",
+      "display_name": "T cell activation",
+      "aliases": [
+        "T cell activation signature",
+        "TCR activation"
+      ],
+      "genes": [
+        "JUN",
+        "FOS",
+        "BATF",
+        "IL2",
+        "IL2RA"
+      ],
+      "source": "curated_mvp_signature",
+      "caveat": "Hand-curated for this MVP demo; not sourced from MSigDB or a peer-reviewed gene set collection."
+    },
+    {
+      "signature_id": "th1_like_polarization",
+      "display_name": "Th1-like polarization",
+      "aliases": [
+        "Th1 polarization",
+        "Th1-like signature",
+        "type 1 helper signature"
+      ],
+      "genes": [
+        "TBX21",
+        "IFNG",
+        "STAT1"
+      ],
+      "source": "curated_mvp_signature",
+      "caveat": "Hand-curated for this MVP demo; not sourced from MSigDB or a peer-reviewed gene set collection."
+    },
+    {
+      "signature_id": "th2_like_polarization",
+      "display_name": "Th2-like polarization",
+      "aliases": [
+        "Th2 polarization",
+        "Th2-like signature",
+        "type 2 helper signature"
+      ],
+      "genes": [
+        "GATA3",
+        "IL4"
+      ],
+      "source": "curated_mvp_signature",
+      "caveat": "Hand-curated for this MVP demo; not sourced from MSigDB or a peer-reviewed gene set collection."
+    },
+    {
+      "signature_id": "exhaustion_like_signature",
+      "display_name": "Exhaustion-like signature",
+      "aliases": [
+        "T cell exhaustion",
+        "exhaustion signature",
+        "checkpoint exhaustion"
+      ],
+      "genes": [
+        "PDCD1",
+        "CTLA4",
+        "LAG3",
+        "HAVCR2",
+        "TOX"
+      ],
+      "source": "curated_mvp_signature",
+      "caveat": "Hand-curated for this MVP demo; not sourced from MSigDB or a peer-reviewed gene set collection."
+    },
+    {
+      "signature_id": "proliferation_cell_cycle",
+      "display_name": "Proliferation / cell cycle",
+      "aliases": [
+        "proliferation signature",
+        "cell cycle signature"
+      ],
+      "genes": [
+        "MKI67",
+        "CCND1",
+        "MYC"
+      ],
+      "source": "curated_mvp_signature",
+      "caveat": "Hand-curated for this MVP demo; not sourced from MSigDB or a peer-reviewed gene set collection."
+    },
+    {
+      "signature_id": "stress_response",
+      "display_name": "Stress response",
+      "aliases": [
+        "stress response signature",
+        "immediate early gene response"
+      ],
+      "genes": [
+        "FOS",
+        "JUN",
+        "CDKN1A"
+      ],
+      "source": "curated_mvp_signature",
+      "caveat": "Hand-curated for this MVP demo; not sourced from MSigDB or a peer-reviewed gene set collection."
+    }
+  ]
+}

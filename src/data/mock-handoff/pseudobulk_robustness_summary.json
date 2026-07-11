@@ -1,0 +1,82 @@
+[
+  {
+    "target_gene_symbol": "STAT1",
+    "culture_condition": "Stim8hr",
+    "n_guides": 4,
+    "donor_robustness_score": 0.88,
+    "guide_robustness_score": 0.92,
+    "low_target_expression_flag": false,
+    "offtarget_flags": [],
+    "low_confidence_flag": false
+  },
+  {
+    "target_gene_symbol": "IRF1",
+    "culture_condition": "Stim8hr",
+    "n_guides": 3,
+    "donor_robustness_score": 0.8,
+    "guide_robustness_score": 0.85,
+    "low_target_expression_flag": false,
+    "offtarget_flags": [],
+    "low_confidence_flag": false
+  },
+  {
+    "target_gene_symbol": "IRF4",
+    "culture_condition": "Stim48hr",
+    "n_guides": 3,
+    "donor_robustness_score": 0.75,
+    "guide_robustness_score": 0.8,
+    "low_target_expression_flag": false,
+    "offtarget_flags": [],
+    "low_confidence_flag": false
+  },
+  {
+    "target_gene_symbol": "BATF",
+    "culture_condition": "Stim8hr",
+    "n_guides": 2,
+    "donor_robustness_score": 0.55,
+    "guide_robustness_score": 0.6,
+    "low_target_expression_flag": true,
+    "offtarget_flags": [],
+    "low_confidence_flag": true
+  },
+  {
+    "target_gene_symbol": "JUN",
+    "culture_condition": "Stim8hr",
+    "n_guides": 4,
+    "donor_robustness_score": 0.85,
+    "guide_robustness_score": 0.9,
+    "low_target_expression_flag": false,
+    "offtarget_flags": [],
+    "low_confidence_flag": false
+  },
+  {
+    "target_gene_symbol": "FOS",
+    "culture_condition": "Stim8hr",
+    "n_guides": 4,
+    "donor_robustness_score": 0.83,
+    "guide_robustness_score": 0.88,
+    "low_target_expression_flag": false,
+    "offtarget_flags": [],
+    "low_confidence_flag": false
+  },
+  {
+    "target_gene_symbol": "NFKB1",
+    "culture_condition": "Stim8hr",
+    "n_guides": 3,
+    "donor_robustness_score": 0.81,
+    "guide_robustness_score": 0.86,
+    "low_target_expression_flag": false,
+    "offtarget_flags": ["Guide 2 shows partial off-target knockdown of NFKB2"],
+    "low_confidence_flag": false
+  },
+  {
+    "target_gene_symbol": "RELA",
+    "culture_condition": "Stim8hr",
+    "n_guides": 3,
+    "donor_robustness_score": 0.79,
+    "guide_robustness_score": 0.84,
+    "low_target_expression_flag": false,
+    "offtarget_flags": [],
+    "low_confidence_flag": false
+  }
+]

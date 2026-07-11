@@ -1,0 +1,179 @@
+{
+  "schema": "dataset_terms.geneground.v1",
+  "generated_at": "2026-07-11T05:28:07.070Z",
+  "dataset_label": "Primary Human CD4+ T Cell Perturb-seq (Virtual Cell Models)",
+  "conditions": [
+    "Rest",
+    "Stim8hr",
+    "Stim48hr"
+  ],
+  "condition_aliases": {
+    "resting": {
+      "conditions": [
+        "Rest"
+      ],
+      "ambiguous": false,
+      "note": null
+    },
+    "unstimulated": {
+      "conditions": [
+        "Rest"
+      ],
+      "ambiguous": false,
+      "note": null
+    },
+    "stimulated": {
+      "conditions": [
+        "Stim8hr",
+        "Stim48hr"
+      ],
+      "ambiguous": true,
+      "note": "Generic 'stimulated' language does not specify a timepoint; both Stim8hr and Stim48hr are plausible matches in this dataset."
+    },
+    "early stimulation": {
+      "conditions": [
+        "Stim8hr"
+      ],
+      "ambiguous": false,
+      "note": null
+    },
+    "8 hour stimulation": {
+      "conditions": [
+        "Stim8hr"
+      ],
+      "ambiguous": false,
+      "note": null
+    },
+    "8h": {
+      "conditions": [
+        "Stim8hr"
+      ],
+      "ambiguous": false,
+      "note": null
+    },
+    "8 hour": {
+      "conditions": [
+        "Stim8hr"
+      ],
+      "ambiguous": false,
+      "note": null
+    },
+    "late stimulation": {
+      "conditions": [
+        "Stim48hr"
+      ],
+      "ambiguous": false,
+      "note": null
+    },
+    "48 hour stimulation": {
+      "conditions": [
+        "Stim48hr"
+      ],
+      "ambiguous": false,
+      "note": null
+    },
+    "48h": {
+      "conditions": [
+        "Stim48hr"
+      ],
+      "ambiguous": false,
+      "note": null
+    },
+    "48 hour": {
+      "conditions": [
+        "Stim48hr"
+      ],
+      "ambiguous": false,
+      "note": null
+    }
+  },
+  "perturbation_types": [
+    "CRISPRi_knockdown"
+  ],
+  "perturbation_type_aliases": {
+    "knockdown": {
+      "normalized": "CRISPRi_knockdown",
+      "warning": null,
+      "note": null
+    },
+    "crispri": {
+      "normalized": "CRISPRi_knockdown",
+      "warning": null,
+      "note": null
+    },
+    "repression": {
+      "normalized": "CRISPRi_knockdown",
+      "warning": null,
+      "note": null
+    },
+    "silencing": {
+      "normalized": "CRISPRi_knockdown",
+      "warning": null,
+      "note": null
+    },
+    "knockout": {
+      "normalized": null,
+      "warning": "possible_knockout_language_warning",
+      "note": "This dataset uses CRISPRi knockdown, not true knockout. 'Knockout' language may overstate the perturbation."
+    },
+    "knock out": {
+      "normalized": null,
+      "warning": "possible_knockout_language_warning",
+      "note": "This dataset uses CRISPRi knockdown, not true knockout. 'Knockout' language may overstate the perturbation."
+    }
+  },
+  "direction_aliases": {
+    "down": "down",
+    "suppress": "down",
+    "suppresses": "down",
+    "suppressed": "down",
+    "decrease": "down",
+    "decreases": "down",
+    "decreased": "down",
+    "downregulate": "down",
+    "downregulates": "down",
+    "downregulated": "down",
+    "lower": "down",
+    "reduce": "down",
+    "reduces": "down",
+    "reduced": "down",
+    "inhibits": "down",
+    "depleted": "down",
+    "attenuated": "down",
+    "up": "up",
+    "activate": "up",
+    "activates": "up",
+    "activated": "up",
+    "increase": "up",
+    "increases": "up",
+    "increased": "up",
+    "upregulate": "up",
+    "upregulates": "up",
+    "upregulated": "up",
+    "higher": "up",
+    "elevated": "up",
+    "induce": "up",
+    "induces": "up",
+    "induced": "up",
+    "enhances": "up",
+    "promotes": "up",
+    "enriched": "up",
+    "alter": "changed",
+    "alters": "changed",
+    "altered": "changed",
+    "change": "changed",
+    "changes": "changed",
+    "changed": "changed",
+    "shift": "changed",
+    "shifts": "changed",
+    "shifted": "changed",
+    "affect": "changed",
+    "affects": "changed",
+    "affected": "changed",
+    "modulate": "changed",
+    "modulates": "changed",
+    "modulated": "changed",
+    "perturbed": "changed",
+    "rewired": "changed"
+  }
+}

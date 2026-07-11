@@ -1,0 +1,302 @@
+[
+  {
+    "id": "stat1-ifng",
+    "matchKeywords": ["stat1", "interferon-gamma", "interferon gamma", "ifn-gamma", "ifng", "isg", "interferon-stimulated", "irf1", "oas1", "mx1"],
+    "originalClaim": "Knockdown of STAT1 abolished the interferon-gamma response signature, with strong downregulation of interferon-stimulated genes including IRF1, OAS1, and MX1.",
+    "verdict": "supported",
+    "confidence": "high",
+    "confidenceScore": 0.93,
+    "matchedEntities": {
+      "genes": ["STAT1", "IRF1", "OAS1", "MX1"],
+      "pathways": ["Interferon-gamma response", "JAK-STAT signaling"],
+      "conditions": ["STAT1 CRISPRi knockdown", "IFN-γ stimulation, 24h"]
+    },
+    "evidenceSummary": "Differential expression in the STAT1 knockdown arm shows a coordinated collapse of the canonical ISG core across all IFN-γ-stimulated replicates, consistent with STAT1's role as the central transcription factor downstream of IFNGR signaling.",
+    "supportedParts": [
+      "STAT1 knockdown significantly reduces IFN-γ response pathway activity (GSEA NES -3.1, FDR < 1e-6).",
+      "IRF1, OAS1, and MX1 are each significantly downregulated (log2FC < -1.5, adj. p < 0.001) in STAT1-KD vs non-targeting control."
+    ],
+    "unsupportedParts": [],
+    "missingEvidence": [
+      "No direct measurement of STAT1 protein-level knockdown efficiency (mRNA knockdown only)."
+    ],
+    "saferRewrite": "Knockdown of STAT1 significantly reduced interferon-gamma response pathway activity, with IRF1, OAS1, and MX1 among the most strongly downregulated interferon-stimulated genes.",
+    "evidenceSources": [
+      {
+        "id": "stat1-de-01",
+        "title": "Perturb-seq Differential Expression: STAT1 KD vs NTC (IFN-γ, 24h)",
+        "source": "Claude Science — Perturb-seq Screen v3",
+        "artifactType": "Differential Expression Table",
+        "excerpt": "IRF1 log2FC -2.14 (adj p=3.2e-9); OAS1 log2FC -1.87 (adj p=1.1e-7); MX1 log2FC -1.62 (adj p=4.4e-6). 412 of 431 core ISGs significantly downregulated.",
+        "citation": "DE table, n=3 replicates, MAST test"
+      },
+      {
+        "id": "stat1-gsea-01",
+        "title": "GSEA: Hallmark Interferon Gamma Response",
+        "source": "Claude Science — Pathway Enrichment Module",
+        "artifactType": "Pathway Enrichment (GSEA)",
+        "excerpt": "NES = -3.08, FDR q < 1e-6 for STAT1-KD vs NTC contrast, 187/200 leading-edge genes downregulated.",
+        "citation": "Hallmark gene sets, fgsea"
+      }
+    ]
+  },
+  {
+    "id": "tp53-apoptosis",
+    "matchKeywords": ["tp53", "p53", "apoptosis", "apoptotic", "cdkn1a", "bax"],
+    "originalClaim": "TP53 perturbation induced a robust apoptotic program across all cell types in the screen.",
+    "verdict": "overstated",
+    "confidence": "medium",
+    "confidenceScore": 0.61,
+    "matchedEntities": {
+      "genes": ["TP53", "BAX", "CDKN1A"],
+      "pathways": ["p53 signaling", "Apoptosis"],
+      "conditions": ["TP53 knockout, pooled screen"]
+    },
+    "evidenceSummary": "The apoptotic signature following TP53 perturbation is real but restricted to a subset of proliferative cell states; two of five annotated cell types show no significant enrichment.",
+    "supportedParts": [
+      "TP53 knockout cells show significant upregulation of the apoptosis hallmark gene set in proliferating epithelial-like clusters (NES +2.4, FDR < 0.01).",
+      "CDKN1A and BAX are both upregulated in the same clusters (adj p < 0.01)."
+    ],
+    "unsupportedParts": [
+      "\"Across all cell types\" is not supported: myeloid and quiescent clusters show no significant apoptosis enrichment (FDR > 0.3).",
+      "Effect size in the two non-significant clusters is close to zero, inconsistent with a uniform, cell-type-independent program."
+    ],
+    "missingEvidence": [
+      "No cleaved-caspase or annexin-V functional validation — transcriptional proxy signature only."
+    ],
+    "saferRewrite": "TP53 perturbation induced a significant apoptotic transcriptional signature in proliferative cell clusters, but this effect was not detected in myeloid or quiescent populations.",
+    "evidenceSources": [
+      {
+        "id": "tp53-gsea-01",
+        "title": "GSEA: Hallmark Apoptosis, by Cell-Type Cluster",
+        "source": "Claude Science — Pathway Enrichment Module",
+        "artifactType": "Pathway Enrichment (GSEA)",
+        "excerpt": "Epithelial-like cluster: NES +2.41, FDR q=0.004. Fibroblast-like cluster: NES +1.98, FDR q=0.02. Myeloid cluster: NES +0.31, FDR q=0.58. Quiescent cluster: NES +0.12, FDR q=0.81.",
+        "citation": "Per-cluster GSEA, Hallmark gene sets"
+      },
+      {
+        "id": "tp53-de-01",
+        "title": "Perturb-seq Differential Expression: TP53 KO vs NTC",
+        "source": "Claude Science — Perturb-seq Screen v3",
+        "artifactType": "Differential Expression Table",
+        "excerpt": "CDKN1A log2FC +1.72 (adj p=2.1e-8); BAX log2FC +0.94 (adj p=0.003), effects concentrated in proliferating clusters.",
+        "citation": "DE table, n=4 replicates, MAST test"
+      }
+    ]
+  },
+  {
+    "id": "pdcd1-checkpoint",
+    "matchKeywords": ["pdcd1", "pd-1", "pd1", "checkpoint blockade", "checkpoint", "cd8", "effector cytokine", "ifng", "tnf"],
+    "originalClaim": "PDCD1 (PD-1) knockout increased effector cytokine production in CD8+ T cells, consistent with checkpoint blockade phenotypes.",
+    "verdict": "partially_supported",
+    "confidence": "medium",
+    "confidenceScore": 0.68,
+    "matchedEntities": {
+      "genes": ["PDCD1", "IFNG", "TNF"],
+      "pathways": ["T cell activation", "Cytokine signaling"],
+      "conditions": ["PDCD1 CRISPR KO, CD8+ T cells, anti-CD3/CD28 restimulation"]
+    },
+    "evidenceSummary": "PDCD1 KO increases IFNG transcription on restimulation, matching the expected checkpoint-release phenotype, but TNF and degranulation markers are unchanged, so \"effector cytokine production\" as a general claim overreaches.",
+    "supportedParts": [
+      "IFNG is significantly upregulated in PDCD1-KO CD8+ T cells after restimulation (log2FC +1.1, adj p=0.004).",
+      "Direction of effect matches the expected checkpoint-blockade phenotype."
+    ],
+    "unsupportedParts": [
+      "TNF shows no significant change (log2FC +0.08, adj p=0.71).",
+      "GZMB/PRF1 degranulation markers are not significantly altered, so the general claim of increased \"effector cytokine production\" overstates a single-gene effect."
+    ],
+    "missingEvidence": [
+      "No protein-level cytokine secretion data (ELISA/CyTOF) in this dataset — transcriptional readout only."
+    ],
+    "saferRewrite": "PDCD1 knockout increased IFNG transcription in restimulated CD8+ T cells, consistent with a partial checkpoint-blockade phenotype, though TNF and degranulation markers were unaffected.",
+    "evidenceSources": [
+      {
+        "id": "pdcd1-de-01",
+        "title": "Perturb-seq Differential Expression: PDCD1 KO vs NTC, CD8+ T cells (restimulated)",
+        "source": "Claude Science — Perturb-seq Screen v3",
+        "artifactType": "Differential Expression Table",
+        "excerpt": "IFNG log2FC +1.14 (adj p=0.004); TNF log2FC +0.08 (adj p=0.71); GZMB log2FC +0.11 (adj p=0.62); PRF1 log2FC -0.04 (adj p=0.89).",
+        "citation": "DE table, n=3 replicates, MAST test"
+      }
+    ]
+  },
+  {
+    "id": "foxp3-treg",
+    "matchKeywords": ["foxp3", "treg", "regulatory t cell", "th17", "rorc", "il17a", "il17"],
+    "originalClaim": "FOXP3 loss completely reprogrammed regulatory T cells into a Th17-like state.",
+    "verdict": "unsupported",
+    "confidence": "high",
+    "confidenceScore": 0.81,
+    "matchedEntities": {
+      "genes": ["FOXP3", "RORC", "IL17A"],
+      "pathways": ["Treg identity program", "Th17 differentiation"],
+      "conditions": ["FOXP3 knockout, Treg-sorted cells"]
+    },
+    "evidenceSummary": "FOXP3 loss destabilizes the canonical Treg transcriptional program, but there is no coordinated induction of the Th17 program — RORC and IL17A are not upregulated — so the claimed lineage conversion is not supported by this dataset.",
+    "supportedParts": [
+      "FOXP3 knockout significantly reduces canonical Treg identity genes (IL2RA, CTLA4, IKZF2; adj p < 0.01)."
+    ],
+    "unsupportedParts": [
+      "RORC shows no significant change (adj p=0.52).",
+      "IL17A is not detected above background in either condition.",
+      "No shift toward a Th17-like transcriptional cluster is observed in cluster-proportion analysis."
+    ],
+    "missingEvidence": [
+      "No lineage-tracing or fate-mapping data to assess stability of any reprogramming over time.",
+      "No direct Th17 functional assay (IL-17 secretion)."
+    ],
+    "saferRewrite": "FOXP3 loss destabilized the regulatory T cell identity program (reduced IL2RA, CTLA4, IKZF2), but did not induce a Th17-like transcriptional signature in this dataset.",
+    "evidenceSources": [
+      {
+        "id": "foxp3-de-01",
+        "title": "Perturb-seq Differential Expression: FOXP3 KO vs NTC, Treg-sorted",
+        "source": "Claude Science — Perturb-seq Screen v3",
+        "artifactType": "Differential Expression Table",
+        "excerpt": "IL2RA log2FC -1.41 (adj p=1.8e-6); CTLA4 log2FC -1.05 (adj p=3.4e-5); RORC log2FC +0.09 (adj p=0.52); IL17A: below detection threshold in both arms.",
+        "citation": "DE table, n=3 replicates, MAST test"
+      },
+      {
+        "id": "foxp3-cluster-01",
+        "title": "Cluster Proportion Analysis: FOXP3 KO vs NTC",
+        "source": "Claude Science — Cell-Type Composition Module",
+        "artifactType": "Cell-type Proportion Analysis",
+        "excerpt": "No significant shift into Th17-annotated clusters (chi-sq p=0.44). Majority of FOXP3-KO cells occupy an intermediate/de-differentiated Treg cluster, not a Th17 cluster.",
+        "citation": "Cluster composition, Milo differential abundance"
+      }
+    ]
+  },
+  {
+    "id": "nlrp3-pyroptosis",
+    "matchKeywords": ["nlrp3", "inflammasome", "pyroptosis", "gsdmd", "caspase-1", "casp1", "myeloid"],
+    "originalClaim": "NLRP3 inflammasome activation was the primary driver of the observed pyroptosis signature in myeloid cells.",
+    "verdict": "supported",
+    "confidence": "high",
+    "confidenceScore": 0.88,
+    "matchedEntities": {
+      "genes": ["NLRP3", "CASP1", "GSDMD", "IL1B"],
+      "pathways": ["Inflammasome activation", "Pyroptosis"],
+      "conditions": ["NLRP3 agonist stimulation, myeloid subset"]
+    },
+    "evidenceSummary": "The myeloid-restricted pyroptosis signature co-occurs with NLRP3, CASP1, and GSDMD pathway activation, and is substantially blunted in the NLRP3 knockout arm, supporting a primary causal role.",
+    "supportedParts": [
+      "Pyroptosis gene signature score is significantly elevated in myeloid clusters upon NLRP3 agonist treatment (p < 0.001).",
+      "NLRP3 knockout reduces the pyroptosis signature by 74% relative to wild-type under the same stimulus."
+    ],
+    "unsupportedParts": [],
+    "missingEvidence": [
+      "No direct GSDMD cleavage (Western blot) validation — signature-based inference only."
+    ],
+    "saferRewrite": "NLRP3 inflammasome activation was a major driver of the pyroptosis signature in myeloid cells, supported by strong attenuation of the signature upon NLRP3 knockout.",
+    "evidenceSources": [
+      {
+        "id": "nlrp3-signature-01",
+        "title": "Pyroptosis Signature Score by Perturbation, Myeloid Subset",
+        "source": "Claude Science — Perturb-seq Screen v3",
+        "artifactType": "Signature Score Comparison",
+        "excerpt": "NLRP3 agonist vs untreated: signature score +2.9 SD (p<0.001). NLRP3-KO + agonist vs WT + agonist: 74% reduction in signature score (p<0.001).",
+        "citation": "Composite score, GSDMD/CASP1/IL1B core set"
+      }
+    ]
+  },
+  {
+    "id": "myc-proliferation",
+    "matchKeywords": ["myc", "proliferation", "cell cycle", "mki67", "ccnd1"],
+    "originalClaim": "MYC overexpression uniformly increased proliferation across every perturbed cell population in the dataset.",
+    "verdict": "overstated",
+    "confidence": "medium",
+    "confidenceScore": 0.58,
+    "matchedEntities": {
+      "genes": ["MYC", "MKI67", "CCND1"],
+      "pathways": ["Cell cycle / proliferation", "MYC target genes"],
+      "conditions": ["MYC overexpression, pooled CRISPRa screen"]
+    },
+    "evidenceSummary": "MYC overexpression increases proliferation scores in most, but not all, perturbed populations; one cluster shows a paradoxical decrease consistent with oncogene-induced senescence.",
+    "supportedParts": [
+      "6 of 7 perturbed cell populations show significantly increased proliferation/cell-cycle scores under MYC overexpression (adj p < 0.05)."
+    ],
+    "unsupportedParts": [
+      "\"Uniformly\" and \"every\" are contradicted by cluster 4, which shows a significant decrease in proliferation score (adj p=0.002), consistent with oncogene-induced senescence rather than growth."
+    ],
+    "missingEvidence": [
+      "No competitive growth or dropout assay to confirm the proliferation phenotype at the functional level."
+    ],
+    "saferRewrite": "MYC overexpression increased proliferation scores in most perturbed cell populations, with one notable exception showing a signature consistent with oncogene-induced senescence rather than increased growth.",
+    "evidenceSources": [
+      {
+        "id": "myc-signature-01",
+        "title": "Proliferation Signature Score by Cluster, MYC-OE vs NTC",
+        "source": "Claude Science — Perturb-seq Screen v3",
+        "artifactType": "Signature Score Comparison",
+        "excerpt": "Clusters 1-3, 5-7: proliferation score +0.4 to +1.6 SD (adj p<0.05). Cluster 4: proliferation score -0.7 SD (adj p=0.002); senescence signature score +1.1 SD (adj p=0.01).",
+        "citation": "Composite score, MKI67/CCND1/PCNA core set"
+      }
+    ]
+  },
+  {
+    "id": "il2ra-exhaustion",
+    "matchKeywords": ["il2ra", "cd25", "exhaustion", "havcr2", "lag3", "tox"],
+    "originalClaim": "IL2RA perturbation had no measurable effect on T cell exhaustion markers.",
+    "verdict": "insufficient_evidence",
+    "confidence": "low",
+    "confidenceScore": 0.22,
+    "matchedEntities": {
+      "genes": ["IL2RA"],
+      "pathways": ["T cell exhaustion program"],
+      "conditions": ["IL2RA perturbation — not present in current screen panel"]
+    },
+    "evidenceSummary": "IL2RA is not among the perturbations included in this Perturb-seq screen, and exhaustion marker readouts (TOX, HAVCR2, LAG3) were not collected in the associated experiment, so this claim cannot be checked against available evidence.",
+    "supportedParts": [],
+    "unsupportedParts": [],
+    "missingEvidence": [
+      "IL2RA is not a targeted guide in the available perturbation panel.",
+      "No exhaustion marker panel (TOX, HAVCR2, LAG3, PDCD1) was profiled in any matched condition."
+    ],
+    "saferRewrite": "The effect of IL2RA perturbation on T cell exhaustion markers could not be evaluated — IL2RA is not included in the current perturbation panel, and exhaustion markers were not profiled in a matched condition.",
+    "evidenceSources": [
+      {
+        "id": "il2ra-manifest-01",
+        "title": "Perturb-seq Screen v3 — Guide Panel & Coverage Manifest",
+        "source": "Claude Science — Perturb-seq Screen v3",
+        "artifactType": "Screen Design Manifest",
+        "excerpt": "142 targeting guides across 71 genes. IL2RA: not targeted. Exhaustion marker panel (TOX, HAVCR2, LAG3): not included in this experiment's readout set.",
+        "citation": "Screen manifest v3.2"
+      }
+    ]
+  },
+  {
+    "id": "bax-bak1-rescue",
+    "matchKeywords": ["bax", "bak1", "double knockout", "dko", "apoptosis rescue", "nlrp3", "cell death"],
+    "originalClaim": "Combined knockout of BAX and BAK1 rescued cells from apoptosis induced by NLRP3 activation, though a residual cell death signature persisted, suggesting a minor BAX/BAK1-independent pathway.",
+    "verdict": "partially_supported",
+    "confidence": "medium",
+    "confidenceScore": 0.71,
+    "matchedEntities": {
+      "genes": ["BAX", "BAK1", "NLRP3", "GSDMD"],
+      "pathways": ["Mitochondrial apoptosis", "Inflammasome/pyroptosis crosstalk"],
+      "conditions": ["BAX/BAK1 double knockout + NLRP3 agonist"]
+    },
+    "evidenceSummary": "BAX/BAK1 double knockout substantially reduces the apoptosis signature under NLRP3 activation, and a smaller residual death signature is indeed present in the double-knockout condition, matching both parts of this claim.",
+    "supportedParts": [
+      "Apoptosis signature score is reduced by 81% in BAX/BAK1-DKO vs wild-type under NLRP3 agonist (adj p<0.001).",
+      "A statistically significant residual cell-death-associated signature (19% of wild-type magnitude) remains in the DKO condition (adj p=0.01), consistent with the claimed residual pathway."
+    ],
+    "unsupportedParts": [
+      "The claim that the residual pathway is \"BAX/BAK1-independent\" is a mechanistic interpretation not directly tested — the residual signature could also reflect incomplete knockout efficiency rather than a distinct pathway."
+    ],
+    "missingEvidence": [
+      "No knockout efficiency / protein validation to rule out incomplete BAX/BAK1 depletion as the source of residual signal.",
+      "No test of an alternative death pathway (e.g., pyroptosis via GSDMD) to confirm a mechanistically distinct route."
+    ],
+    "saferRewrite": "Combined knockout of BAX and BAK1 substantially reduced NLRP3-induced apoptosis, with a smaller but statistically significant residual cell-death signature persisting — consistent with, but not proof of, a minor BAX/BAK1-independent pathway.",
+    "evidenceSources": [
+      {
+        "id": "baxbak1-signature-01",
+        "title": "Apoptosis Signature Score: BAX/BAK1-DKO vs WT, + NLRP3 Agonist",
+        "source": "Claude Science — Perturb-seq Screen v3",
+        "artifactType": "Signature Score Comparison",
+        "excerpt": "WT + agonist: apoptosis score +3.2 SD. DKO + agonist: apoptosis score +0.6 SD (81% reduction, adj p<0.001 vs WT; residual signal adj p=0.01 vs unstimulated DKO).",
+        "citation": "Composite score, BAX/BAK1/CASP3/CASP9 core set"
+      }
+    ]
+  }
+]

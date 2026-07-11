@@ -1,0 +1,36 @@
+[
+  {
+    "claim_id": "gold-001",
+    "claim_text": "STAT1 knockdown suppresses interferon signaling in stimulated CD4+ T cells.",
+    "expected_verdict": "supported",
+    "supported_parts": [
+      "STAT1 CRISPRi knockdown significantly reduces interferon signaling pathway activity (240 DE genes, on-target effect -6.8, FDR-significant, 4/4 guide robustness)."
+    ],
+    "safer_rewrite": "STAT1 knockdown is associated with a significant reduction in interferon signaling pathway activity in Stim8hr CD4+ T cells."
+  },
+  {
+    "claim_id": "gold-002",
+    "claim_text": "IRF4 perturbation acts as a master regulator of Th2 polarization.",
+    "expected_verdict": "overstated",
+    "supported_parts": [
+      "IRF4 knockdown shifts cells toward an altered Th2-like signature (GATA3, IL4, MAF downregulated; adjusted p = 0.002)."
+    ],
+    "safer_rewrite": "IRF4 perturbation is associated with a shifted Th2-like polarization signature; 'master regulator' status would require robustness and orthogonal validation beyond this single screen."
+  },
+  {
+    "claim_id": "gold-003",
+    "claim_text": "BATF is a therapeutic target for reversing T cell exhaustion.",
+    "expected_verdict": "insufficient_evidence",
+    "supported_parts": [],
+    "safer_rewrite": "BATF perturbation shows an exhaustion-like signature shift, but with low guide/donor robustness (2 guides, low target expression flag) and no functional or translational evidence — 'therapeutic target' is not yet supported."
+  },
+  {
+    "claim_id": "gold-004",
+    "claim_text": "NFKB1 knockdown suppresses inflammatory signaling in stimulated CD4+ T cells.",
+    "expected_verdict": "supported",
+    "supported_parts": [
+      "NFKB1 CRISPRi knockdown significantly reduces TNF/NF-κB pathway activity (adjusted p = 0.00005, 3/3 guide robustness)."
+    ],
+    "safer_rewrite": "NFKB1 knockdown is associated with reduced TNF/NF-κB inflammatory signaling activity in Stim8hr CD4+ T cells."
+  }
+]

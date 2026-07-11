@@ -19,6 +19,7 @@
 
 # production
 /build
+/dist
 
 # misc
 .DS_Store
@@ -30,8 +31,10 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
+# env files — real env files with actual secrets are always excluded; the
+# checked-in template (no secrets, documents which vars to set) is not.
 .env*
+!.env.example
 
 # vercel
 .vercel
@@ -39,3 +42,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# raw ontology source dumps (large; preprocessed into src/data/ontology-mini/
+# by scripts/build-mini-ontology.mjs, which is what the app actually reads)
+/raw-ontology

@@ -1,0 +1,82 @@
+[
+  {
+    "target_gene_symbol": "STAT1",
+    "culture_condition": "Stim8hr",
+    "pathway_name": "Interferon Signaling",
+    "pathway_id": "R-HSA-913531",
+    "signature_id": null,
+    "direction": "down",
+    "overlap_genes": ["IFIT1", "ISG15", "MX1", "OAS1"],
+    "adjusted_p_value": 0.0000012
+  },
+  {
+    "target_gene_symbol": "IRF1",
+    "culture_condition": "Stim8hr",
+    "pathway_name": "Interferon gamma signaling",
+    "pathway_id": "R-HSA-877300",
+    "signature_id": null,
+    "direction": "down",
+    "overlap_genes": ["CXCL10", "IL1B", "GBP1"],
+    "adjusted_p_value": 0.0004
+  },
+  {
+    "target_gene_symbol": "IRF4",
+    "culture_condition": "Stim48hr",
+    "pathway_name": "Th2-like polarization",
+    "pathway_id": null,
+    "signature_id": "th2_like_polarization",
+    "direction": "changed",
+    "overlap_genes": ["GATA3", "IL4", "MAF"],
+    "adjusted_p_value": 0.002
+  },
+  {
+    "target_gene_symbol": "BATF",
+    "culture_condition": "Stim8hr",
+    "pathway_name": "Exhaustion-like signature",
+    "pathway_id": null,
+    "signature_id": "exhaustion_like_signature",
+    "direction": "changed",
+    "overlap_genes": ["TOX", "PDCD1"],
+    "adjusted_p_value": 0.01
+  },
+  {
+    "target_gene_symbol": "JUN",
+    "culture_condition": "Stim8hr",
+    "pathway_name": "T cell activation",
+    "pathway_id": null,
+    "signature_id": "t_cell_activation",
+    "direction": "down",
+    "overlap_genes": ["IL2", "CD69", "EGR2"],
+    "adjusted_p_value": 0.0003
+  },
+  {
+    "target_gene_symbol": "FOS",
+    "culture_condition": "Stim8hr",
+    "pathway_name": "Stress response",
+    "pathway_id": null,
+    "signature_id": "stress_response",
+    "direction": "down",
+    "overlap_genes": ["EGR1", "NR4A1"],
+    "adjusted_p_value": 0.001
+  },
+  {
+    "target_gene_symbol": "NFKB1",
+    "culture_condition": "Stim8hr",
+    "pathway_name": "TNF / NF-κB signaling",
+    "pathway_id": null,
+    "signature_id": "tnf_nfkB_signaling",
+    "direction": "down",
+    "overlap_genes": ["TNF", "IL1B", "NFKBIA"],
+    "adjusted_p_value": 0.00005
+  },
+  {
+    "target_gene_symbol": "RELA",
+    "culture_condition": "Stim8hr",
+    "pathway_name": "TNF / NF-κB signaling",
+    "pathway_id": null,
+    "signature_id": "tnf_nfkB_signaling",
+    "direction": "down",
+    "overlap_genes": ["TNF", "IL6", "CXCL8"],
+    "adjusted_p_value": 0.00008
+  }
+]

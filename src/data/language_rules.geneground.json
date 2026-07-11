@@ -1,0 +1,110 @@
+[
+  {
+    "trigger_word": "drives",
+    "claim_types": ["causal_mechanism"],
+    "severity": "medium",
+    "required_evidence": "Direct perturbation effect plus pathway/signature evidence in the same direction; ideally multiple independent guides/donors.",
+    "risky_reason": "'Drives' implies a causal, directional force beyond what a single perturbation screen typically establishes.",
+    "safer_rewrite_patterns": ["is associated with", "is consistent with driving"],
+    "example_warning": "Claim uses 'drives' — verify perturbation effect size, direction, and robustness before treating this as established causation."
+  },
+  {
+    "trigger_word": "causes",
+    "claim_types": ["causal_mechanism"],
+    "severity": "high",
+    "required_evidence": "Strong perturbation effect with robust replication, ideally orthogonal validation (e.g., rescue experiment, independent dataset).",
+    "risky_reason": "'Causes' is the strongest causal claim; differential expression from a single Perturb-seq screen alone does not establish causation.",
+    "safer_rewrite_patterns": ["is associated with", "is consistent with", "correlates with"],
+    "example_warning": "Claim uses 'causes' — this requires stronger evidence than differential expression or enrichment alone."
+  },
+  {
+    "trigger_word": "proves",
+    "claim_types": ["causal_mechanism", "unsupported_generalization"],
+    "severity": "high",
+    "required_evidence": "No single experiment 'proves' a biological mechanism; requires converging orthogonal evidence across methods.",
+    "risky_reason": "'Proves' overstates certainty that a transcriptomic screen cannot provide on its own.",
+    "safer_rewrite_patterns": ["suggests", "is consistent with", "provides evidence for"],
+    "example_warning": "Claim uses 'proves' — this word should almost never be used for a single perturbation dataset; rewrite as suggestive language."
+  },
+  {
+    "trigger_word": "master regulator",
+    "claim_types": ["regulatory_role"],
+    "severity": "high",
+    "required_evidence": "Strong perturbation effect, pathway/signature evidence, robustness across guides and donors, and ideally orthogonal validation (e.g., ChIP-seq, independent perturbation).",
+    "risky_reason": "'Master regulator' is a strong ranking claim implying hierarchical control over a program, not just an involved gene.",
+    "safer_rewrite_patterns": ["is associated with regulation of", "shows regulator-like effects on"],
+    "example_warning": "Claim uses 'master regulator' — check for perturbation effect strength, pathway evidence, and cross-guide/donor robustness."
+  },
+  {
+    "trigger_word": "key regulator",
+    "claim_types": ["regulatory_role"],
+    "severity": "medium",
+    "required_evidence": "Perturbation effect on the relevant pathway/signature plus reasonable robustness across guides.",
+    "risky_reason": "'Key regulator' is softer than 'master regulator' but still implies outsized importance relative to other genes.",
+    "safer_rewrite_patterns": ["contributes to regulation of", "is associated with"],
+    "example_warning": "Claim uses 'key regulator' — confirm the perturbation effect is not marginal relative to other genes in the pathway."
+  },
+  {
+    "trigger_word": "therapeutic target",
+    "claim_types": ["therapeutic_relevance"],
+    "severity": "high",
+    "required_evidence": "Evidence beyond transcriptomic perturbation — functional/phenotypic validation, disease-relevance data, or supporting external literature.",
+    "risky_reason": "'Therapeutic target' is a clinical/translational claim that a Perturb-seq transcriptomic screen alone cannot establish.",
+    "safer_rewrite_patterns": ["raises the possibility of therapeutic relevance", "warrants further investigation as a candidate target"],
+    "example_warning": "Claim uses 'therapeutic target' — this requires evidence beyond this dataset (functional validation or literature support)."
+  },
+  {
+    "trigger_word": "mechanism",
+    "claim_types": ["causal_mechanism"],
+    "severity": "high",
+    "required_evidence": "Stronger evidence than pathway enrichment alone — ideally time-course, epistasis, or direct binding/interaction data.",
+    "risky_reason": "'Mechanism' implies a specific, validated causal pathway, not just correlated pathway enrichment.",
+    "safer_rewrite_patterns": ["is consistent with a possible mechanism involving", "suggests involvement of"],
+    "example_warning": "Claim uses 'mechanism' — pathway enrichment alone does not establish mechanism; check for stronger supporting evidence."
+  },
+  {
+    "trigger_word": "rescues",
+    "claim_types": ["causal_mechanism"],
+    "severity": "medium",
+    "required_evidence": "A dedicated rescue experiment (re-expression or complementary perturbation) demonstrating reversal of a phenotype, not just an opposing-direction differential expression signal.",
+    "risky_reason": "'Rescues' implies a specific rescue experiment was performed; a perturbation screen alone cannot demonstrate rescue.",
+    "safer_rewrite_patterns": ["is associated with a reversal of", "shows an opposing effect consistent with"],
+    "example_warning": "Claim uses 'rescues' — confirm a rescue experiment was actually performed, not inferred from perturbation direction alone."
+  },
+  {
+    "trigger_word": "reprograms",
+    "claim_types": ["causal_mechanism", "cell_state_effect"],
+    "severity": "medium",
+    "required_evidence": "Evidence of a durable, coordinated identity shift — ideally lineage-tracing or long-term fate data, not a single-timepoint transcriptional signature.",
+    "risky_reason": "'Reprograms' implies a stable identity change, which a single-timepoint Perturb-seq snapshot cannot confirm.",
+    "safer_rewrite_patterns": ["shifts the transcriptional signature toward", "is associated with a partial state change toward"],
+    "example_warning": "Claim uses 'reprograms' — check whether the evidence shows a durable identity change or just a signature shift."
+  },
+  {
+    "trigger_word": "suppresses",
+    "claim_types": ["perturbation_effect"],
+    "severity": "low",
+    "required_evidence": "Directionally consistent, statistically significant differential expression or signature change in the down direction.",
+    "risky_reason": "'Suppresses' is usually acceptable if directionally supported, but can overstate specificity or completeness of the effect.",
+    "safer_rewrite_patterns": ["is associated with decreased expression/signature of", "reduces"],
+    "example_warning": "Claim uses 'suppresses' — acceptable if direction is significant, but consider phrasing as 'associated with decreased' for precision."
+  },
+  {
+    "trigger_word": "activates",
+    "claim_types": ["perturbation_effect"],
+    "severity": "low",
+    "required_evidence": "Directionally consistent, statistically significant differential expression or signature change in the up direction.",
+    "risky_reason": "'Activates' is usually acceptable if directionally supported, but can overstate specificity of the effect.",
+    "safer_rewrite_patterns": ["is associated with increased expression/signature of", "increases"],
+    "example_warning": "Claim uses 'activates' — acceptable if direction is significant, but consider phrasing as 'associated with increased' for precision."
+  },
+  {
+    "trigger_word": "shifts",
+    "claim_types": ["cell_state_effect", "perturbation_effect"],
+    "severity": "low",
+    "required_evidence": "A detectable change in signature/state score between conditions, without requiring a specific direction.",
+    "risky_reason": "'Shifts' is generally safe/vague language, but should still be backed by a measurable signature change rather than assumed.",
+    "safer_rewrite_patterns": ["is associated with a shift toward", "shows a signature change consistent with"],
+    "example_warning": "Claim uses 'shifts' — generally low-risk language, but confirm a measurable signature/state change backs it."
+  }
+]

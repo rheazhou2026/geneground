@@ -1,0 +1,14 @@
+{
+  "handoff_project_id": "handoff-cd4-perturbseq-v3",
+  "project_name": "CD4+ T Cell Perturb-seq — Claude Science Handoff",
+  "dataset_label": "Primary Human CD4+ T Cell Perturb-seq (Virtual Cell Models)",
+  "status": "ready",
+  "generated_at": "2026-07-01T09:00:00Z",
+  "artifacts": [
+    { "name": "perturbation_evidence_packets.json", "artifact_type": "Perturbation Evidence Packet" },
+    { "name": "pathway_enrichment_packets.json", "artifact_type": "Pathway Enrichment Packet" },
+    { "name": "pseudobulk_robustness_summary.json", "artifact_type": "Pseudobulk Robustness Summary" },
+    { "name": "dataset_schema_map.json", "artifact_type": "Dataset Schema Map" },
+    { "name": "demo_claims_gold_verdicts.json", "artifact_type": "Demo Claims + Gold Verdicts" }
+  ]
+}

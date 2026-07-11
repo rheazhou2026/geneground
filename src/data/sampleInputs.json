@@ -1,0 +1,17 @@
+[
+  {
+    "id": "sample-ifn-checkpoint",
+    "label": "IFN / checkpoint panel",
+    "text": "Knockdown of STAT1 abolished the interferon-gamma response signature, with strong downregulation of interferon-stimulated genes including IRF1, OAS1, and MX1. TP53 perturbation induced a robust apoptotic program across all cell types in the screen. PDCD1 (PD-1) knockout increased effector cytokine production in CD8+ T cells, consistent with checkpoint blockade phenotypes."
+  },
+  {
+    "id": "sample-treg-inflammasome",
+    "label": "Treg / inflammasome panel",
+    "text": "FOXP3 loss completely reprogrammed regulatory T cells into a Th17-like state. NLRP3 inflammasome activation was the primary driver of the observed pyroptosis signature in myeloid cells. IL2RA perturbation had no measurable effect on T cell exhaustion markers."
+  },
+  {
+    "id": "sample-myc-apoptosis",
+    "label": "MYC / apoptosis panel",
+    "text": "MYC overexpression uniformly increased proliferation across every perturbed cell population in the dataset. Combined knockout of BAX and BAK1 rescued cells from apoptosis induced by NLRP3 activation, though a residual cell death signature persisted, suggesting a minor BAX/BAK1-independent pathway."
+  }
+]

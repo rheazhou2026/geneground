@@ -1,0 +1,840 @@
+{
+  "schema": "genes.hgnc.mini.v1",
+  "generated_at": "2026-07-11T05:28:07.070Z",
+  "source": "HGNC complete set (raw-ontology/hgnc/hgnc_complete_set.json), focused subset",
+  "gene_count": 45,
+  "missing_symbols": [],
+  "approved_symbols": {
+    "BAK1": {
+      "hgnc_id": "HGNC:949",
+      "symbol": "BAK1",
+      "name": "BCL2 antagonist/killer 1",
+      "alias_symbol": [
+        "BCL2L7",
+        "BAK"
+      ],
+      "prev_symbol": [
+        "CDN1"
+      ],
+      "ensembl_gene_id": "ENSG00000030110",
+      "locus_group": "protein-coding gene",
+      "locus_type": "gene with protein product"
+    },
+    "BATF": {
+      "hgnc_id": "HGNC:958",
+      "symbol": "BATF",
+      "name": "basic leucine zipper ATF-like transcription factor",
+      "alias_symbol": [
+        "B-ATF",
+        "SFA-2",
+        "BATF1"
+      ],
+      "prev_symbol": [],
+      "ensembl_gene_id": "ENSG00000156127",
+      "locus_group": "protein-coding gene",
+      "locus_type": "gene with protein product"
+    },
+    "BAX": {
+      "hgnc_id": "HGNC:959",
+      "symbol": "BAX",
+      "name": "BCL2 associated X, apoptosis regulator",
+      "alias_symbol": [
+        "BCL2L4"
+      ],
+      "prev_symbol": [],
+      "ensembl_gene_id": "ENSG00000087088",
+      "locus_group": "protein-coding gene",
+      "locus_type": "gene with protein product"
+    },
+    "BCL6": {
+      "hgnc_id": "HGNC:1001",
+      "symbol": "BCL6",
+      "name": "BCL6 transcription repressor",
+      "alias_symbol": [
+        "ZBTB27",
+        "LAZ3",
+        "BCL5",
+        "BCL6A"
+      ],
+      "prev_symbol": [
+        "ZNF51"
+      ],
+      "ensembl_gene_id": "ENSG00000113916",
+      "locus_group": "protein-coding gene",
+      "locus_type": "gene with protein product"
+    },
+    "CASP1": {
+      "hgnc_id": "HGNC:1499",
+      "symbol": "CASP1",
+      "name": "caspase 1",
+      "alias_symbol": [
+        "ICE"
+      ],
+      "prev_symbol": [
+        "IL1BC"
+      ],
+      "ensembl_gene_id": "ENSG00000137752",
+      "locus_group": "protein-coding gene",
+      "locus_type": "gene with protein product"
+    },
+    "CCND1": {
+      "hgnc_id": "HGNC:1582",
+      "symbol": "CCND1",
+      "name": "cyclin D1",
+      "alias_symbol": [
+        "U21B31"
+      ],
+      "prev_symbol": [
+        "BCL1",
+        "D11S287E",
+        "PRAD1"
+      ],
+      "ensembl_gene_id": "ENSG00000110092",
+      "locus_group": "protein-coding gene",
+      "locus_type": "gene with protein product"
+    },
+    "CD28": {
+      "hgnc_id": "HGNC:1653",
+      "symbol": "CD28",
+      "name": "CD28 molecule",
+      "alias_symbol": [],
+      "prev_symbol": [],
+      "ensembl_gene_id": "ENSG00000178562",
+      "locus_group": "protein-coding gene",
+      "locus_type": "gene with protein product"
+    },
+    "CDKN1A": {
+      "hgnc_id": "HGNC:1784",
+      "symbol": "CDKN1A",
+      "name": "cyclin dependent kinase inhibitor 1A",
+      "alias_symbol": [
+        "P21",
+        "CIP1",
+        "WAF1",
+        "SDI1",
+        "CAP20",
+        "p21CIP1",
+        "p21Cip1/Waf1",
+        "p21"
+      ],
+      "prev_symbol": [
+        "CDKN1"
+      ],
+      "ensembl_gene_id": "ENSG00000124762",
+      "locus_group": "protein-coding gene",
+      "locus_type": "gene with protein product"
+    },
+    "CTLA4": {
+      "hgnc_id": "HGNC:2505",
+      "symbol": "CTLA4",
+      "name": "cytotoxic T-lymphocyte associated protein 4",
+      "alias_symbol": [
+        "CD152",
+        "CD",
+        "GSE",
+        "CTLA-4"
+      ],
+      "prev_symbol": [
+        "CELIAC3",
+        "IDDM12"
+      ],
+      "ensembl_gene_id": "ENSG00000163599",
+      "locus_group": "protein-coding gene",
+      "locus_type": "gene with protein product"
+    },
+    "FOS": {
+      "hgnc_id": "HGNC:3796",
+      "symbol": "FOS",
+      "name": "Fos proto-oncogene, AP-1 transcription factor subunit",
+      "alias_symbol": [
+        "c-fos",
+        "AP-1"
+      ],
+      "prev_symbol": [],
+      "ensembl_gene_id": "ENSG00000170345",
+      "locus_group": "protein-coding gene",
+      "locus_type": "gene with protein product"
+    },
+    "FOXP3": {
+      "hgnc_id": "HGNC:6106",
+      "symbol": "FOXP3",
+      "name": "forkhead box P3",
+      "alias_symbol": [
+        "JM2",
+        "XPID",
+        "AIID",
+        "PIDX",
+        "DIETER",
+        "SCURFIN"
+      ],
+      "prev_symbol": [
+        "IPEX"
+      ],
+      "ensembl_gene_id": "ENSG00000049768",
+      "locus_group": "protein-coding gene",
+      "locus_type": "gene with protein product"
+    },
+    "GATA3": {
+      "hgnc_id": "HGNC:4172",
+      "symbol": "GATA3",
+      "name": "GATA binding protein 3",
+      "alias_symbol": [
+        "HDR"
+      ],
+      "prev_symbol": [],
+      "ensembl_gene_id": "ENSG00000107485",
+      "locus_group": "protein-coding gene",
+      "locus_type": "gene with protein product"
+    },
+    "GSDMD": {
+      "hgnc_id": "HGNC:25697",
+      "symbol": "GSDMD",
+      "name": "gasdermin D",
+      "alias_symbol": [
+        "FLJ12150",
+        "DF5L"
+      ],
+      "prev_symbol": [
+        "GSDMDC1"
+      ],
+      "ensembl_gene_id": "ENSG00000104518",
+      "locus_group": "protein-coding gene",
+      "locus_type": "gene with protein product"
+    },
+    "GZMB": {
+      "hgnc_id": "HGNC:4709",
+      "symbol": "GZMB",
+      "name": "granzyme B",
+      "alias_symbol": [
+        "CCPI",
+        "CGL-1",
+        "CSP-B",
+        "CGL1",
+        "CTSGL1",
+        "HLP",
+        "SECT"
+      ],
+      "prev_symbol": [
+        "CTLA1",
+        "CSPB"
+      ],
+      "ensembl_gene_id": "ENSG00000100453",
+      "locus_group": "protein-coding gene",
+      "locus_type": "gene with protein product"
+    },
+    "HAVCR2": {
+      "hgnc_id": "HGNC:18437",
+      "symbol": "HAVCR2",
+      "name": "hepatitis A virus cellular receptor 2",
+      "alias_symbol": [
+        "Tim-3",
+        "TIM3",
+        "FLJ14428",
+        "TIMD3",
+        "CD366"
+      ],
+      "prev_symbol": [],
+      "ensembl_gene_id": "ENSG00000135077",
+      "locus_group": "protein-coding gene",
+      "locus_type": "gene with protein product"
+    },
+    "ICOS": {
+      "hgnc_id": "HGNC:5351",
+      "symbol": "ICOS",
+      "name": "inducible T cell costimulator",
+      "alias_symbol": [
+        "AILIM",
+        "CD278"
+      ],
+      "prev_symbol": [],
+      "ensembl_gene_id": "ENSG00000163600",
+      "locus_group": "protein-coding gene",
+      "locus_type": "gene with protein product"
+    },
+    "IFNG": {
+      "hgnc_id": "HGNC:5438",
+      "symbol": "IFNG",
+      "name": "interferon gamma",
+      "alias_symbol": [],
+      "prev_symbol": [],
+      "ensembl_gene_id": "ENSG00000111537",
+      "locus_group": "protein-coding gene",
+      "locus_type": "gene with protein product"
+    },
+    "IL17A": {
+      "hgnc_id": "HGNC:5981",
+      "symbol": "IL17A",
+      "name": "interleukin 17A",
+      "alias_symbol": [
+        "IL-17A",
+        "IL-17"
+      ],
+      "prev_symbol": [
+        "CTLA8",
+        "IL17"
+      ],
+      "ensembl_gene_id": "ENSG00000112115",
+      "locus_group": "protein-coding gene",
+      "locus_type": "gene with protein product"
+    },
+    "IL1B": {
+      "hgnc_id": "HGNC:5992",
+      "symbol": "IL1B",
+      "name": "interleukin 1 beta",
+      "alias_symbol": [
+        "IL1F2",
+        "IL-1B",
+        "IL1-BETA"
+      ],
+      "prev_symbol": [],
+      "ensembl_gene_id": "ENSG00000125538",
+      "locus_group": "protein-coding gene",
+      "locus_type": "gene with protein product"
+    },
+    "IL2": {
+      "hgnc_id": "HGNC:6001",
+      "symbol": "IL2",
+      "name": "interleukin 2",
+      "alias_symbol": [
+        "IL-2",
+        "TCGF"
+      ],
+      "prev_symbol": [],
+      "ensembl_gene_id": "ENSG00000109471",
+      "locus_group": "protein-coding gene",
+      "locus_type": "gene with protein product"
+    },
+    "IL2RA": {
+      "hgnc_id": "HGNC:6008",
+      "symbol": "IL2RA",
+      "name": "interleukin 2 receptor subunit alpha",
+      "alias_symbol": [
+        "CD25"
+      ],
+      "prev_symbol": [
+        "IL2R",
+        "IDDM10"
+      ],
+      "ensembl_gene_id": "ENSG00000134460",
+      "locus_group": "protein-coding gene",
+      "locus_type": "gene with protein product"
+    },
+    "IL4": {
+      "hgnc_id": "HGNC:6014",
+      "symbol": "IL4",
+      "name": "interleukin 4",
+      "alias_symbol": [
+        "BSF1",
+        "IL-4",
+        "BCGF1",
+        "BCGF-1",
+        "MGC79402"
+      ],
+      "prev_symbol": [],
+      "ensembl_gene_id": "ENSG00000113520",
+      "locus_group": "protein-coding gene",
+      "locus_type": "gene with protein product"
+    },
+    "IRF1": {
+      "hgnc_id": "HGNC:6116",
+      "symbol": "IRF1",
+      "name": "interferon regulatory factor 1",
+      "alias_symbol": [
+        "MAR"
+      ],
+      "prev_symbol": [],
+      "ensembl_gene_id": "ENSG00000125347",
+      "locus_group": "protein-coding gene",
+      "locus_type": "gene with protein product"
+    },
+    "IRF4": {
+      "hgnc_id": "HGNC:6119",
+      "symbol": "IRF4",
+      "name": "interferon regulatory factor 4",
+      "alias_symbol": [
+        "LSIRF"
+      ],
+      "prev_symbol": [
+        "MUM1"
+      ],
+      "ensembl_gene_id": "ENSG00000137265",
+      "locus_group": "protein-coding gene",
+      "locus_type": "gene with protein product"
+    },
+    "JUN": {
+      "hgnc_id": "HGNC:6204",
+      "symbol": "JUN",
+      "name": "Jun proto-oncogene, AP-1 transcription factor subunit",
+      "alias_symbol": [
+        "c-Jun",
+        "AP-1"
+      ],
+      "prev_symbol": [],
+      "ensembl_gene_id": "ENSG00000177606",
+      "locus_group": "protein-coding gene",
+      "locus_type": "gene with protein product"
+    },
+    "LAG3": {
+      "hgnc_id": "HGNC:6476",
+      "symbol": "LAG3",
+      "name": "lymphocyte activating 3",
+      "alias_symbol": [
+        "CD223"
+      ],
+      "prev_symbol": [],
+      "ensembl_gene_id": "ENSG00000089692",
+      "locus_group": "protein-coding gene",
+      "locus_type": "gene with protein product"
+    },
+    "MKI67": {
+      "hgnc_id": "HGNC:7107",
+      "symbol": "MKI67",
+      "name": "marker of proliferation Ki-67",
+      "alias_symbol": [
+        "MIB-1",
+        "PPP1R105",
+        "Ki-67"
+      ],
+      "prev_symbol": [],
+      "ensembl_gene_id": "ENSG00000148773",
+      "locus_group": "protein-coding gene",
+      "locus_type": "gene with protein product"
+    },
+    "MX1": {
+      "hgnc_id": "HGNC:7532",
+      "symbol": "MX1",
+      "name": "MX dynamin like GTPase 1",
+      "alias_symbol": [
+        "IFI-78K",
+        "MxA",
+        "lncMX1-215"
+      ],
+      "prev_symbol": [],
+      "ensembl_gene_id": "ENSG00000157601",
+      "locus_group": "protein-coding gene",
+      "locus_type": "gene with protein product"
+    },
+    "MYC": {
+      "hgnc_id": "HGNC:7553",
+      "symbol": "MYC",
+      "name": "MYC proto-oncogene, bHLH transcription factor",
+      "alias_symbol": [
+        "c-Myc",
+        "bHLHe39",
+        "MYCC"
+      ],
+      "prev_symbol": [],
+      "ensembl_gene_id": "ENSG00000136997",
+      "locus_group": "protein-coding gene",
+      "locus_type": "gene with protein product"
+    },
+    "NFKB1": {
+      "hgnc_id": "HGNC:7794",
+      "symbol": "NFKB1",
+      "name": "nuclear factor kappa B subunit 1",
+      "alias_symbol": [
+        "KBF1",
+        "p105",
+        "NFKB-p50",
+        "p50",
+        "NF-kappaB",
+        "NFkappaB",
+        "NF-kB1"
+      ],
+      "prev_symbol": [],
+      "ensembl_gene_id": "ENSG00000109320",
+      "locus_group": "protein-coding gene",
+      "locus_type": "gene with protein product"
+    },
+    "NFKB2": {
+      "hgnc_id": "HGNC:7795",
+      "symbol": "NFKB2",
+      "name": "nuclear factor kappa B subunit 2",
+      "alias_symbol": [
+        "LYT-10",
+        "p52",
+        "p105",
+        "NF-kB2",
+        "p49/p100"
+      ],
+      "prev_symbol": [],
+      "ensembl_gene_id": "ENSG00000077150",
+      "locus_group": "protein-coding gene",
+      "locus_type": "gene with protein product"
+    },
+    "NLRP3": {
+      "hgnc_id": "HGNC:16400",
+      "symbol": "NLRP3",
+      "name": "NLR family pyrin domain containing 3",
+      "alias_symbol": [
+        "AGTAVPRL",
+        "AII",
+        "AVP",
+        "FCAS",
+        "FCU",
+        "NALP3",
+        "PYPAF1",
+        "MWS",
+        "CLR1.1"
+      ],
+      "prev_symbol": [
+        "C1orf7",
+        "CIAS1",
+        "DFNA34"
+      ],
+      "ensembl_gene_id": "ENSG00000162711",
+      "locus_group": "protein-coding gene",
+      "locus_type": "gene with protein product"
+    },
+    "OAS1": {
+      "hgnc_id": "HGNC:8086",
+      "symbol": "OAS1",
+      "name": "2'-5'-oligoadenylate synthetase 1",
+      "alias_symbol": [
+        "OIASI",
+        "IFI-4"
+      ],
+      "prev_symbol": [
+        "OIAS"
+      ],
+      "ensembl_gene_id": "ENSG00000089127",
+      "locus_group": "protein-coding gene",
+      "locus_type": "gene with protein product"
+    },
+    "PDCD1": {
+      "hgnc_id": "HGNC:8760",
+      "symbol": "PDCD1",
+      "name": "programmed cell death 1",
+      "alias_symbol": [
+        "CD279",
+        "PD1",
+        "hSLE1",
+        "PD-1"
+      ],
+      "prev_symbol": [
+        "SLEB2"
+      ],
+      "ensembl_gene_id": "ENSG00000188389",
+      "locus_group": "protein-coding gene",
+      "locus_type": "gene with protein product"
+    },
+    "PRDM1": {
+      "hgnc_id": "HGNC:9346",
+      "symbol": "PRDM1",
+      "name": "PR/SET domain 1",
+      "alias_symbol": [
+        "PRDI-BF1",
+        "Blimp-1"
+      ],
+      "prev_symbol": [
+        "BLIMP1"
+      ],
+      "ensembl_gene_id": "ENSG00000057657",
+      "locus_group": "protein-coding gene",
+      "locus_type": "gene with protein product"
+    },
+    "PRF1": {
+      "hgnc_id": "HGNC:9360",
+      "symbol": "PRF1",
+      "name": "perforin 1",
+      "alias_symbol": [
+        "PFP",
+        "P1",
+        "HPLH2"
+      ],
+      "prev_symbol": [],
+      "ensembl_gene_id": "ENSG00000180644",
+      "locus_group": "protein-coding gene",
+      "locus_type": "gene with protein product"
+    },
+    "RELA": {
+      "hgnc_id": "HGNC:9955",
+      "symbol": "RELA",
+      "name": "RELA proto-oncogene, NF-kB subunit",
+      "alias_symbol": [
+        "p65"
+      ],
+      "prev_symbol": [
+        "NFKB3"
+      ],
+      "ensembl_gene_id": "ENSG00000173039",
+      "locus_group": "protein-coding gene",
+      "locus_type": "gene with protein product"
+    },
+    "RELB": {
+      "hgnc_id": "HGNC:9956",
+      "symbol": "RELB",
+      "name": "RELB proto-oncogene, NF-kB subunit",
+      "alias_symbol": [
+        "REL-B"
+      ],
+      "prev_symbol": [],
+      "ensembl_gene_id": "ENSG00000104856",
+      "locus_group": "protein-coding gene",
+      "locus_type": "gene with protein product"
+    },
+    "RORC": {
+      "hgnc_id": "HGNC:10260",
+      "symbol": "RORC",
+      "name": "RAR related orphan receptor C",
+      "alias_symbol": [
+        "RZRG",
+        "RORG",
+        "NR1F3",
+        "TOR"
+      ],
+      "prev_symbol": [],
+      "ensembl_gene_id": "ENSG00000143365",
+      "locus_group": "protein-coding gene",
+      "locus_type": "gene with protein product"
+    },
+    "STAT1": {
+      "hgnc_id": "HGNC:11362",
+      "symbol": "STAT1",
+      "name": "signal transducer and activator of transcription 1",
+      "alias_symbol": [
+        "STAT91",
+        "ISGF-3"
+      ],
+      "prev_symbol": [],
+      "ensembl_gene_id": "ENSG00000115415",
+      "locus_group": "protein-coding gene",
+      "locus_type": "gene with protein product"
+    },
+    "STAT2": {
+      "hgnc_id": "HGNC:11363",
+      "symbol": "STAT2",
+      "name": "signal transducer and activator of transcription 2",
+      "alias_symbol": [
+        "STAT113"
+      ],
+      "prev_symbol": [],
+      "ensembl_gene_id": "ENSG00000170581",
+      "locus_group": "protein-coding gene",
+      "locus_type": "gene with protein product"
+    },
+    "TBX21": {
+      "hgnc_id": "HGNC:11599",
+      "symbol": "TBX21",
+      "name": "T-box transcription factor 21",
+      "alias_symbol": [
+        "TBLYM",
+        "T-bet"
+      ],
+      "prev_symbol": [],
+      "ensembl_gene_id": "ENSG00000073861",
+      "locus_group": "protein-coding gene",
+      "locus_type": "gene with protein product"
+    },
+    "TNF": {
+      "hgnc_id": "HGNC:11892",
+      "symbol": "TNF",
+      "name": "tumor necrosis factor",
+      "alias_symbol": [
+        "TNFSF2",
+        "DIF",
+        "TNF-alpha"
+      ],
+      "prev_symbol": [
+        "TNFA"
+      ],
+      "ensembl_gene_id": "ENSG00000232810",
+      "locus_group": "protein-coding gene",
+      "locus_type": "gene with protein product"
+    },
+    "TOX": {
+      "hgnc_id": "HGNC:18988",
+      "symbol": "TOX",
+      "name": "thymocyte selection associated high mobility group box",
+      "alias_symbol": [
+        "KIAA0808",
+        "TOX1"
+      ],
+      "prev_symbol": [],
+      "ensembl_gene_id": "ENSG00000198846",
+      "locus_group": "protein-coding gene",
+      "locus_type": "gene with protein product"
+    },
+    "TP53": {
+      "hgnc_id": "HGNC:11998",
+      "symbol": "TP53",
+      "name": "tumor protein p53",
+      "alias_symbol": [
+        "p53",
+        "LFS1"
+      ],
+      "prev_symbol": [],
+      "ensembl_gene_id": "ENSG00000141510",
+      "locus_group": "protein-coding gene",
+      "locus_type": "gene with protein product"
+    }
+  },
+  "alias_to_symbol": {
+    "bcl2l7": "BAK1",
+    "bak": "BAK1",
+    "b-atf": "BATF",
+    "sfa-2": "BATF",
+    "batf1": "BATF",
+    "bcl2l4": "BAX",
+    "zbtb27": "BCL6",
+    "laz3": "BCL6",
+    "bcl5": "BCL6",
+    "bcl6a": "BCL6",
+    "ice": "CASP1",
+    "u21b31": "CCND1",
+    "p21": "CDKN1A",
+    "cip1": "CDKN1A",
+    "waf1": "CDKN1A",
+    "sdi1": "CDKN1A",
+    "cap20": "CDKN1A",
+    "p21cip1": "CDKN1A",
+    "p21cip1/waf1": "CDKN1A",
+    "cd152": "CTLA4",
+    "cd": "CTLA4",
+    "gse": "CTLA4",
+    "ctla-4": "CTLA4",
+    "c-fos": "FOS",
+    "ap-1": "FOS",
+    "jm2": "FOXP3",
+    "xpid": "FOXP3",
+    "aiid": "FOXP3",
+    "pidx": "FOXP3",
+    "dieter": "FOXP3",
+    "scurfin": "FOXP3",
+    "hdr": "GATA3",
+    "flj12150": "GSDMD",
+    "df5l": "GSDMD",
+    "ccpi": "GZMB",
+    "cgl-1": "GZMB",
+    "csp-b": "GZMB",
+    "cgl1": "GZMB",
+    "ctsgl1": "GZMB",
+    "hlp": "GZMB",
+    "sect": "GZMB",
+    "tim-3": "HAVCR2",
+    "tim3": "HAVCR2",
+    "flj14428": "HAVCR2",
+    "timd3": "HAVCR2",
+    "cd366": "HAVCR2",
+    "ailim": "ICOS",
+    "cd278": "ICOS",
+    "il-17a": "IL17A",
+    "il-17": "IL17A",
+    "il1f2": "IL1B",
+    "il-1b": "IL1B",
+    "il1-beta": "IL1B",
+    "il-2": "IL2",
+    "tcgf": "IL2",
+    "cd25": "IL2RA",
+    "bsf1": "IL4",
+    "il-4": "IL4",
+    "bcgf1": "IL4",
+    "bcgf-1": "IL4",
+    "mgc79402": "IL4",
+    "mar": "IRF1",
+    "lsirf": "IRF4",
+    "c-jun": "JUN",
+    "cd223": "LAG3",
+    "mib-1": "MKI67",
+    "ppp1r105": "MKI67",
+    "ki-67": "MKI67",
+    "ifi-78k": "MX1",
+    "mxa": "MX1",
+    "lncmx1-215": "MX1",
+    "c-myc": "MYC",
+    "bhlhe39": "MYC",
+    "mycc": "MYC",
+    "kbf1": "NFKB1",
+    "p105": "NFKB1",
+    "nfkb-p50": "NFKB1",
+    "p50": "NFKB1",
+    "nf-kappab": "NFKB1",
+    "nfkappab": "NFKB1",
+    "nf-kb1": "NFKB1",
+    "lyt-10": "NFKB2",
+    "p52": "NFKB2",
+    "nf-kb2": "NFKB2",
+    "p49/p100": "NFKB2",
+    "agtavprl": "NLRP3",
+    "aii": "NLRP3",
+    "avp": "NLRP3",
+    "fcas": "NLRP3",
+    "fcu": "NLRP3",
+    "nalp3": "NLRP3",
+    "pypaf1": "NLRP3",
+    "mws": "NLRP3",
+    "clr1.1": "NLRP3",
+    "oiasi": "OAS1",
+    "ifi-4": "OAS1",
+    "cd279": "PDCD1",
+    "pd1": "PDCD1",
+    "hsle1": "PDCD1",
+    "pd-1": "PDCD1",
+    "prdi-bf1": "PRDM1",
+    "blimp-1": "PRDM1",
+    "pfp": "PRF1",
+    "p1": "PRF1",
+    "hplh2": "PRF1",
+    "p65": "RELA",
+    "rel-b": "RELB",
+    "rzrg": "RORC",
+    "rorg": "RORC",
+    "nr1f3": "RORC",
+    "tor": "RORC",
+    "stat91": "STAT1",
+    "isgf-3": "STAT1",
+    "stat113": "STAT2",
+    "tblym": "TBX21",
+    "t-bet": "TBX21",
+    "tnfsf2": "TNF",
+    "dif": "TNF",
+    "tnf-alpha": "TNF",
+    "kiaa0808": "TOX",
+    "tox1": "TOX",
+    "p53": "TP53",
+    "lfs1": "TP53",
+    "tbet": "TBX21",
+    "nf-kb p65": "RELA",
+    "nf-κb p65": "RELA",
+    "ifn-gamma": "IFNG",
+    "interferon gamma": "IFNG"
+  },
+  "previous_symbol_to_symbol": {
+    "cdn1": "BAK1",
+    "znf51": "BCL6",
+    "il1bc": "CASP1",
+    "bcl1": "CCND1",
+    "d11s287e": "CCND1",
+    "prad1": "CCND1",
+    "cdkn1": "CDKN1A",
+    "celiac3": "CTLA4",
+    "iddm12": "CTLA4",
+    "ipex": "FOXP3",
+    "gsdmdc1": "GSDMD",
+    "ctla1": "GZMB",
+    "cspb": "GZMB",
+    "ctla8": "IL17A",
+    "il17": "IL17A",
+    "il2r": "IL2RA",
+    "iddm10": "IL2RA",
+    "mum1": "IRF4",
+    "c1orf7": "NLRP3",
+    "cias1": "NLRP3",
+    "dfna34": "NLRP3",
+    "oias": "OAS1",
+    "sleb2": "PDCD1",
+    "blimp1": "PRDM1",
+    "nfkb3": "RELA",
+    "tnfa": "TNF"
+  },
+  "manual_alias_overrides": {
+    "t-bet": "TBX21",
+    "tbet": "TBX21",
+    "nf-kb p65": "RELA",
+    "nf-κb p65": "RELA",
+    "pd-1": "PDCD1",
+    "ctla-4": "CTLA4",
+    "ifn-gamma": "IFNG",
+    "interferon gamma": "IFNG"
+  }
+}
