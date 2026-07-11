@@ -1,3 +1,7 @@
+# GeneGround
+
+GeneGround is a claim-level grounding layer for AI-generated omics interpretations. It audits Perturb-seq claims against Claude Science evidence, flags overstated biological language, and produces evidence-linked rewrites with traceable verdicts.
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
