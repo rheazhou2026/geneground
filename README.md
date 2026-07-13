@@ -74,14 +74,6 @@ It then:
 
 The goal isn't to replace the scientist's judgment — it's to give them an evidence-linked review layer before an AI-generated interpretation shapes a paper, a grant, or a downstream experiment.
 
-## Documentation
-
-The README below covers the what and why. Two companion docs in /docs define the exact backend spec and controlled vocabularies the app is built against — useful for judges or contributors who want to verify the pipeline's rigor beyond the pitch:
-
-Doc	What it covers
-[docs/geneground-backend-logic.md]([url](https://github.com/rheazhou2026/geneground/blob/main/docs/geneground-backend-logic.md))	The full stage-by-stage backend spec: every pipeline step, whether it's deterministic or Claude-powered, and the exact JSON each step outputs (claim extraction, entity normalization, artifact discovery, agent query planning, retrieval, four-agent evaluation, final verdict, interactive annotation, chat, and action plans).
-[docs/geneground-taxonomies.md]([url](https://github.com/rheazhou2026/geneground/blob/main/docs/geneground-taxonomies.md))	The canonical controlled vocabularies referenced throughout the backend logic doc and this README: condition mapping rules, the 15-type claim taxonomy, direction/strength/causal word dictionaries, gene/pathway Source and Match_type values, artifact-type classification + RAG index routing, Evidence_type and Quality_flags taxonomies, retrieval modes, agent-level and final verdict rules, and rewrite behavior.
-
 ## Key Features
 
 - **Claim-level decomposition** — every sentence in an AI-written interpretation is parsed into atomic, individually checkable biological claims, each traceable back to its exact character span in the original text.
@@ -93,6 +85,15 @@ Doc	What it covers
 - **Full end-to-end traceability** — every verdict can be traced sentence → claim → agent query → evidence chunk, with the retrieval mode and reasoning recorded at each hop.
 - **Interactive, real-time annotation** — select or double-click any sentence in the rewritten interpretation to check it against grounded evidence or ask a follow-up question in a claim-aware chat.
 - **Auditable, revertible edits** — every AI-proposed rewrite is issued as an action plan the user can approve, cancel, or edit before it's applied, with a one-click revert to the previous version.
+
+## Documentation
+
+Two companion docs define the exact backend spec and controlled vocabularies the app is built against:
+
+| Doc | What it covers |
+|---|---|
+| [`docs/geneground-backend-logic.md`](https://github.com/rheazhou2026/geneground/blob/main/docs/geneground-backend-logic.md) | The full stage-by-stage backend spec: every pipeline step, whether it's deterministic or Claude-powered, and the exact JSON each step outputs (claim extraction, entity normalization, artifact discovery, agent query planning, retrieval, four-agent evaluation, final verdict, interactive annotation, chat, and action plans). |
+| [`docs/geneground-taxonomies.md`](https://github.com/rheazhou2026/geneground/blob/main/docs/geneground-taxonomies.md) | The canonical controlled vocabularies referenced throughout the backend logic doc and this README: condition mapping rules, the 15-type claim taxonomy, direction/strength/causal word dictionaries, gene/pathway `Source` and `Match_type` values, artifact-type classification + RAG index routing, `Evidence_type` and `Quality_flags` taxonomies, retrieval modes, agent-level and final verdict rules, and rewrite behavior. |
 
 ## How It Works
 
