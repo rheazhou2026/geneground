@@ -21,6 +21,7 @@ Built for the **Built with Claude: Life Sciences** hackathon (Builder track), po
 - [The Problem](#the-problem)
 - [What GeneGround Does](#what-geneground-does)
 - [Key Features](#key-features)
+- [Documentation](#documentation)
 - [How It Works](#how-it-works)
 - [Verdict Taxonomy](#verdict-taxonomy)
 - [Tech Stack](#tech-stack)
@@ -72,6 +73,14 @@ It then:
 - Lets the researcher **interactively re-check or rewrite** any sentence in real time, with every proposed edit backed by an approvable, revertible action plan
 
 The goal isn't to replace the scientist's judgment — it's to give them an evidence-linked review layer before an AI-generated interpretation shapes a paper, a grant, or a downstream experiment.
+
+## Documentation
+
+The README below covers the what and why. Two companion docs in /docs define the exact backend spec and controlled vocabularies the app is built against — useful for judges or contributors who want to verify the pipeline's rigor beyond the pitch:
+
+Doc	What it covers
+[docs/geneground-backend-logic.md]([url](https://github.com/rheazhou2026/geneground/blob/main/docs/geneground-backend-logic.md))	The full stage-by-stage backend spec: every pipeline step, whether it's deterministic or Claude-powered, and the exact JSON each step outputs (claim extraction, entity normalization, artifact discovery, agent query planning, retrieval, four-agent evaluation, final verdict, interactive annotation, chat, and action plans).
+[docs/geneground-taxonomies.md]([url](https://github.com/rheazhou2026/geneground/blob/main/docs/geneground-taxonomies.md))	The canonical controlled vocabularies referenced throughout the backend logic doc and this README: condition mapping rules, the 15-type claim taxonomy, direction/strength/causal word dictionaries, gene/pathway Source and Match_type values, artifact-type classification + RAG index routing, Evidence_type and Quality_flags taxonomies, retrieval modes, agent-level and final verdict rules, and rewrite behavior.
 
 ## Key Features
 
