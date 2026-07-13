@@ -1,256 +1,311 @@
 # GeneGround
 
-**Claim-level grounding for AI-generated omics interpretations.**
+**A claim-level grounding checker for AI-assisted genomics interpretation.**
 
-GeneGround audits AI-generated biological interpretations against Claude Science evidence. It decomposes an omics interpretation into individual claims, retrieves relevant evidence from a Claude Science handoff, flags unsupported or overstated language, and produces an evidence-linked grounded rewrite.
+GeneGround decomposes AI-generated omics summaries into individual biological claims, checks each one against the underlying dataset and published literature, and returns an auditable, evidence-linked verdict — so a scientist can trust an AI interpretation before it shapes a paper, presentation, or downstream experiment.
 
-**Live demo:** https://geneground.vercel.app  
-**GitHub:** https://github.com/rheazhou2026/geneground  
+Built for the **Built with Claude: Life Sciences** hackathon (Builder track), powered by **Claude Code** and **Claude Science**, and demoed on the Gladstone/UCSF T cell Perturb-seq dataset.
 
-Built for **Built with Claude: Life Sciences** as a Builder track project.
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
+[![Built with Claude](https://img.shields.io/badge/Built%20with-Claude-6A5ACD)](https://www.anthropic.com/news/claude-science-ai-workbench)
+[![Next.js](https://img.shields.io/badge/Next.js-000000?logo=next.js&logoColor=white)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?logo=vercel)](https://geneground.vercel.app)
 
----
-
-## Why GeneGround
-
-AI can now write fluent biological interpretations, but fluency is not the same as evidence.
-
-In high-dimensional workflows like Perturb-seq and single-cell analysis, an AI-generated summary might correctly describe a gene-expression pattern while subtly overreaching into claims about regulatory roles, mechanisms, or distinct biological programs. Those wording differences matter: they can influence which genes researchers prioritize, which experiments they run next, and which narratives make it into papers or grant proposals.
-
-GeneGround is designed for that gap. It turns AI-generated omics narratives into auditable, claim-level scientific objects.
+**[Live Demo](https://geneground.vercel.app)** · **[Demo Video](https://www.youtube.com/watch?v=aILeQ9WDXzs)** · **[Report an Issue](https://github.com/rheazhou2026/geneground/issues)**
 
 ---
 
-## What GeneGround does
+## Table of Contents
 
-GeneGround takes:
-
-- an AI-generated omics interpretation
-- a Claude Science handoff zip
-- evidence packets from a Perturb-seq analysis
-
-and returns:
-
-- a **grounded rewritten interpretation**
-- **claim-level verdicts** such as `supported_with_caveats`, `partially_supported`, and `overstated`
-- an interactive **claim audit panel**
-- a transparent **technical pipeline**
-- an **evidence trace** linking each verdict back to the exact chunks used by the agents
-
-The goal is not to replace the scientist. The goal is to make AI-assisted scientific interpretation easier to inspect, challenge, and revise.
-
----
-
-## Demo example
-
-The live demo uses a primary human CD4+ T cell Perturb-seq interpretation involving CRISPRi perturbations of transcription factors including **NFKB2**, **GATA3**, **STAT1**, and **BATF**.
-
-GeneGround identifies that most claims are supported with caveats, while more interpretive language receives stricter treatment. For example:
-
-- a broad NFKB2 differential-expression claim is marked **supported with caveats**
-- a regulatory-role inference is marked **partially supported**
-- a synthesis claim about “distinct arms” of the CD4+ T cell response is marked **overstated**
-- methodological caveats about pseudobulk DE and CRISPRi knockdown are preserved
-
-This demonstrates the core behavior: GeneGround does not simply approve or reject an entire interpretation. It checks where each claim sits relative to the evidence.
+- [The Problem](#the-problem)
+- [What GeneGround Does](#what-geneground-does)
+- [Key Features](#key-features)
+- [How It Works](#how-it-works)
+- [Verdict Taxonomy](#verdict-taxonomy)
+- [Tech Stack](#tech-stack)
+- [Architecture at a Glance](#architecture-at-a-glance)
+- [Getting Started](#getting-started)
+- [Usage](#usage)
+- [Project Structure](#project-structure)
+- [Demo Dataset](#demo-dataset)
+- [Roadmap](#roadmap)
+- [Acknowledgments](#acknowledgments)
+- [License](#license)
 
 ---
 
-## How it works
+## The Problem
 
-GeneGround combines deterministic infrastructure with Claude-powered reasoning.
+Researchers increasingly rely on LLMs to summarize and interpret large omics datasets — but those summaries are not always faithful to the underlying statistics. A model might:
 
-### 1. Claim extraction
+- Call a gene a **"top regulator"** when its effect size is marginal
+- **Reverse the direction** of a regulatory relationship
+- Treat a **non-significant association** as biologically meaningful
+- Turn a **weak pathway enrichment signal** into a confident mechanistic claim
 
-Claude extracts biological claims from the pasted interpretation, including perturbation effects, pathway claims, robustness claims, and higher-level biological interpretations.
+In a Perturb-seq or single-cell workflow, these are not cosmetic errors — they can change which genes get prioritized for follow-up, which pathways are investigated, and which hypotheses move into real experiments.
 
-### 2. Biological normalization
+This gap between AI enthusiasm and AI trust is well documented:
 
-GeneGround deterministically normalizes biological entities:
+- **77%** of life sciences labs expect to use AI within the next two years, and AI remains the #1 lab investment priority for the third year running — yet **34%** now cite a lack of skilled people as a barrier to adoption, up from 23% the year before ([Pistoia Alliance, 2025 Lab of the Future Survey](https://pistoiaalliance.org/news/survey-ai-adoption-life-sciences-labs-skills-gap/)).
+- Only **22%** of life-sciences leaders report having successfully scaled AI, and just **9%** report significant returns on their AI investment ([Deloitte, 2026 Life Sciences Outlook](https://www.deloitte.com/us/en/insights/industry/health-care/life-sciences-and-health-care-industry-outlooks/2026-life-sciences-executive-outlook.html)).
 
-- genes → HGNC symbols
-- pathways → Reactome or curated immune signatures
-- conditions → dataset values such as `Rest`, `Stim8hr`, and `Stim48hr`
-- directions → standardized values such as `up`, `down`, or `changed`
+Science is becoming increasingly data-rich, and analysis — not data collection — is now the bottleneck. Gladstone's Data Science and Biotechnology Institute frames its own mission around exactly this challenge: building "new technologies and platforms that enable researchers to extract useful knowledge from the massive data sets collected from modern experiments" ([Gladstone Institutes](https://gladstone.org/science/data-science-and-biotechnology-institute)). As AI-assisted interpretation becomes embedded in that pipeline, the same auditing expectations that are emerging around high-stakes clinical AI will inevitably extend to computational biology: the ability to trace a claim back to data, check it against known biology, and document that check as part of the scientific record.
 
-This creates structured search keys for retrieval.
+GeneGround exists to make that auditing step fast, structured, and trustworthy — turning AI-generated interpretation from an opaque narrative block into a set of testable, evidence-linked units.
 
-### 3. Evidence indexing
+## What GeneGround Does
 
-The Claude Science handoff is parsed into evidence indexes:
+GeneGround ingests two things from a computational biologist's workflow:
 
-- perturbation evidence
-- pathway/signature evidence
-- robustness and QC evidence
-- provenance
-- claim wording rules
+1. **The analysis output** — a ranked gene table with effect sizes, p-values, FDR values, perturbation labels, and pathway annotations.
+2. **The AI-generated interpretation** — the plain-language summary Claude (or any LLM) produced about which genes and pathways matter.
 
-Instead of asking a model to reread entire files, GeneGround packages the handoff into small evidence chunks with metadata.
+It then:
 
-### 4. Evidence retrieval
+- Breaks the interpretation into **discrete, traceable biological claims**
+- **Normalizes** every gene, pathway, cell type, condition, and direction mentioned against standard ontologies (HGNC, Reactome, Cell Ontology)
+- Routes each claim to **four specialized evaluation agents** that independently check it against perturbation evidence, pathway signatures, robustness/quality flags, and language-causality risk
+- Cross-references high-confidence claims against **published literature priors** via a Claude Science literature-grounding layer
+- Returns a **claim-by-claim verdict** — supported, supported with caveats, partially supported, overstated, unsupported, insufficient evidence, or needs review — with the exact data rows and citations used to reach that verdict
+- Lets the researcher **interactively re-check or rewrite** any sentence in real time, with every proposed edit backed by an approvable, revertible action plan
 
-For each claim, GeneGround retrieves relevant evidence chunks using metadata matching first. When metadata alone is not enough, it falls back to local TF-IDF retrieval over embedding-ready chunk summaries.
+The goal isn't to replace the scientist's judgment — it's to give them an evidence-linked review layer before an AI-generated interpretation shapes a paper, a grant, or a downstream experiment.
 
-This keeps retrieval fast, transparent, and cost-efficient.
+## Key Features
 
-### 5. Specialist agent evaluation
+- **Claim-level decomposition** — every sentence in an AI-written interpretation is parsed into atomic, individually checkable biological claims, each traceable back to its exact character span in the original text.
+- **Deterministic entity normalization** — genes, pathways, cell types, conditions, and directional language are normalized against HGNC, Reactome, and Cell Ontology (CL Basic), with manual alias overrides and curated immune-signature tables as fallbacks.
+- **Four independent evaluation agents** — `perturbation_evidence`, `pathway_signature`, `robustness_quality`, and `language_causality` each render an independent verdict, so no single agent can unilaterally validate a claim.
+- **Five specialized RAG indexes** — an Artifact Discovery Agent classifies every file in a research handoff folder (perturbation evidence, pathway evidence, robustness evidence, language rules, provenance) so no agent has to parse the entire corpus for every claim.
+- **Cost-efficient local retrieval** — a lexical TF-IDF vector search runs entirely locally as a fallback layer; because omics terminology is highly structured, metadata filtering does most of the retrieval work, and no external vector database is required.
+- **Literature-grounding layer** — high-confidence claims are cross-checked against published biological priors via Claude Science, distinguishing "statistically supported and consistent with known biology" from "statistically supported but speculative" or "in tension with the literature."
+- **Full end-to-end traceability** — every verdict can be traced sentence → claim → agent query → evidence chunk, with the retrieval mode and reasoning recorded at each hop.
+- **Interactive, real-time annotation** — select or double-click any sentence in the rewritten interpretation to check it against grounded evidence or ask a follow-up question in a claim-aware chat.
+- **Auditable, revertible edits** — every AI-proposed rewrite is issued as an action plan the user can approve, cancel, or edit before it's applied, with a one-click revert to the previous version.
 
-Each claim is evaluated by specialist Claude-powered agents:
+## How It Works
 
-- **Perturbation Evidence Agent**
-- **Pathway Signature Agent**
-- **Robustness Quality Agent**
-- **Language Causality Agent**
+GeneGround's pipeline is deliberately split between **deterministic steps** (fast, reproducible, rule-based) and **Claude-powered steps** (reasoning-heavy, used only where judgment is actually required). Twelve stages carry a claim from raw text to a fully rewritten, evidence-linked interpretation:
 
-Claude only sees the retrieved evidence chunks for the claim, not the entire dataset.
+| # | Stage | Type | What Happens |
+|---|-------|------|--------------|
+| 1 | **Claim Extraction** | Claude API | Individual biological claims are extracted from the pasted omics interpretation, each tagged with a claim type, raw entities, and language flags (strength/causal words). |
+| 2 | **Interpretation ↔ Claim Map** | Deterministic | Every claim is linked back to its source sentence and exact character span, forming the first sentence → claim bridge. |
+| 3 | **Entity Normalization** | Deterministic | Raw genes, pathways, conditions, cell types, and direction are normalized against HGNC, Reactome, and Cell Ontology. |
+| 4 | **Normalized Claim Entities** | Deterministic | Claims are finalized with fully normalized entities (plus warnings), giving the retriever the exact terms it needs to find evidence. |
+| 5 | **Artifact Discovery** | Deterministic | Every file in the user's research handoff folder is classified by artifact type and routed to one of five evidence indexes, with a priority and reason attached. |
+| 6 | **Agent Query Planning** | Deterministic | Four agent-specific queries are generated per claim — `perturbation_evidence`, `pathway_signature`, `robustness_quality`, `language_causality` — each with its own filters and guiding question. |
+| 7 | **Evidence Chunk Indexing** | Deterministic | Each artifact index is chunked into small, retrievable evidence units with both raw and normalized metadata, plus an embedding-ready sentence summarizing the chunk. |
+| 8 | **Chunk Retrieval** | Deterministic | A three-tier retrieval strategy — exact metadata match → partial metadata + vector fallback → full TF-IDF lexical vector search — pulls the actual evidence chunks for each agent query. |
+| 9 | **Four-Agent Evaluation** | Claude API (1 call/claim) | All four agents evaluate the claim against their retrieved evidence in a single call and each render a verdict, rationale, and any warnings. |
+| 10 | **Final Verdict & Rewrite** | Deterministic + Claude | A rules-based taxonomy combines the four agent verdicts into one final verdict per claim, and a safely rewritten version of the claim is generated and compiled into a fully rewritten interpretation. |
+| 11 | **Interactive Selection** | Deterministic | The user selects or double-clicks text in the rewritten interpretation; the selection is mapped back to its sentence and claim IDs. |
+| 12 | **Grounded Chat & Action Plans** | Claude API | A claim-aware chatbot answers questions or proposes an approvable, editable, revertible action plan to rewrite the selection using the same evidence chunks. |
 
-### 6. Deterministic final verdict
+Every stage is chained by ID — `sentence_id → claim_id → agent_query_id → chunk_id` — so any final verdict can be traced all the way back to the exact data row, statistic, or literature reference that produced it.
 
-Final verdicts are assigned by deterministic aggregation rules based on the specialist agent outputs.
+**Example: an agent query plan for a single claim**
 
-The user-facing verdicts are:
+```json
+{
+  "claim_id": "claim_001",
+  "agent_queries": {
+    "pathway_signature": {
+      "agent_query_id": "claim_001__pathway_signature",
+      "index_type": "pathway_signature_index",
+      "filters": {
+        "target_gene_symbol": "STAT1",
+        "pathway_keywords": ["interferon"],
+        "conditions": ["Stim8hr", "Stim48hr"],
+        "direction": "down"
+      },
+      "question": "Did STAT1 perturbation show down evidence for interferon pathway/signature activity in Stim8hr or Stim48hr cells?"
+    }
+  }
+}
+```
 
-- `supported`
-- `supported_with_caveats`
-- `partially_supported`
-- `overstated`
-- `unsupported`
-- `insufficient_evidence`
-- `needs_review`
+**Example: a final claim-level verdict**
 
-This keeps the final classification auditable instead of making it another black-box judgment.
+```json
+{
+  "Claim_ID": "claim_001",
+  "original_claim_text": "STAT1 knockout suppresses interferon signaling.",
+  "final_verdict": "supported_with_caveats",
+  "Reason": "Transcriptomic evidence supports a decrease in interferon-response signatures, but the wording implies a direct suppressive mechanism that the dataset alone does not establish.",
+  "Rewritten_Claim": "STAT1 knockout is associated with decreased interferon-response signatures.",
+  "evidence_basis": {
+    "dataset_grounded": true,
+    "chunk_ids_by_agent": {
+      "perturbation_evidence": ["STAT1_Stim8hr_DE_001"],
+      "pathway_signature": ["STAT1_Stim8hr_IFN_001"],
+      "language_causality": ["LANG_SUPPRESSES_001"]
+    }
+  }
+}
+```
 
----
+## Verdict Taxonomy
 
-## Claude usage
+Every claim resolves to exactly one of the following final verdicts:
 
-GeneGround uses Claude in three layers.
+| Verdict | Meaning |
+|---|---|
+| `supported` | Fully consistent with the dataset and, where applicable, published literature. |
+| `supported_with_caveats` | Statistically supported, but the wording overstates certainty or mechanism. |
+| `partially_supported` | Some but not all components of a compound claim hold up. |
+| `overstated` | The underlying effect is real but meaningfully smaller/weaker than claimed. |
+| `unsupported` | Not borne out by the dataset. |
+| `insufficient_evidence` | No relevant evidence chunk was retrievable to evaluate the claim. |
+| `needs_review` | Agents disagree or the claim requires human judgment. |
 
-### Claude Science
+*(Note: earlier iterations of the pipeline included numeric confidence scores per claim; these were deliberately removed in favor of a discrete verdict + rationale, since confidence scores tended to obscure rather than clarify the actual basis for a judgment.)*
 
-Claude Science was used to explore the Perturb-seq analysis and generate the scientific artifacts that become the evidence layer for GeneGround.
+## Tech Stack
 
-### Claude Code
+| Layer | Technology |
+|---|---|
+| Framework | [Next.js](https://nextjs.org/) (full-stack React) |
+| Language | [TypeScript](https://www.typescriptlang.org/) |
+| UI | [React](https://react.dev/) — claim cards, grounded rewrite view, review assistant, technical pipeline view, evidence trace explorer |
+| Styling | [Tailwind CSS](https://tailwindcss.com/) |
+| AI Reasoning | [Claude Code](https://www.anthropic.com/claude-code) + [Claude Science](https://www.anthropic.com/news/claude-science-ai-workbench) (Anthropic) |
+| Retrieval | Local lexical TF-IDF vector search (no external vector database) |
+| Ontology References | HGNC (genes), Reactome (pathways), Cell Ontology / CL Basic (cell types) |
+| Deployment | [Vercel](https://vercel.com/) |
 
-Claude Code was used to build and iterate the full application, including the Next.js interface, evidence pipeline, Claude API routes, review UI, and deployment-ready polish.
+## Architecture at a Glance
 
-### Claude API
+```
+ INPUT A: AI-Generated Interpretation      INPUT B: Research Handoff Folder
+            │                                          │
+            ▼                                          ▼
+ ┌───────────────────────────┐            ┌───────────────────────────┐
+ │ 1. Claim Extraction        │            │ 5. Artifact Discovery     │
+ │    (Claude)                │            │    Agent → 5 RAG indexes  │
+ └────────────┬───────────────┘            └────────────┬───────────────┘
+              ▼                                          ▼
+ ┌───────────────────────────┐            ┌───────────────────────────┐
+ │ 2–4. Sentence/Claim Map +  │            │ 7. Evidence Chunking      │
+ │ Entity Normalization       │            │    (deterministic)        │
+ │    (deterministic)         │            └────────────┬───────────────┘
+ └────────────┬───────────────┘                          │
+              ▼                                          │
+ ┌───────────────────────────┐                           │
+ │ 6. Agent Query Plan        │                           │
+ │    (deterministic)         │───────────────────────────┘
+ └────────────┬───────────────┘
+              ▼
+ ┌───────────────────────────────────────────────────────┐
+ │ 8. Chunk Retrieval — metadata match → TF-IDF fallback  │
+ └────────────────────────────┬────────────────────────────┘
+                              ▼
+ ┌───────────────────────────────────────────────────────┐
+ │ 9. Four Evaluation Agents (1 Claude call per claim)    │
+ │    perturbation · pathway · robustness · causality     │
+ └────────────────────────────┬────────────────────────────┘
+                              ▼
+ ┌───────────────────────────────────────────────────────┐
+ │ 10. Final Verdict + Rewritten Claim                    │
+ │     (deterministic rules + Claude)                     │
+ └────────────────────────────┬────────────────────────────┘
+                              ▼
+ ┌───────────────────────────────────────────────────────┐
+ │ 11–12. Interactive Annotation, Grounded Chat,          │
+ │        Approvable / Revertible Action Plans            │
+ └─────────────────────────────────────────────────────────┘
+```
 
-Inside the product, Claude powers:
+## Getting Started
 
-- claim extraction
-- specialist agent evaluations
-- natural-language rationales
-- grounded rewrites
-- interactive review/chat actions
+### Prerequisites
 
-Deterministic code handles normalization, evidence indexing, retrieval, provenance, and final verdict aggregation.
+- [Node.js](https://nodejs.org/) 18.17 or later
+- An [Anthropic API key](https://console.anthropic.com/) with access to Claude (and Claude Science, if using the literature-grounding layer)
 
-The key design choice is that Claude performs biological reasoning only after GeneGround has constrained the context to retrieved evidence.
-
----
-
-## Product features
-
-- **Chat-style input** for pasted omics interpretations
-- **Claude Science handoff upload**
-- **Grounded rewrite** with highlighted claim spans
-- **Claim-level audit cards**
-- **Interactive review assistant** for selected text
-- **Action plans** for cautious rewrites
-- **Technical pipeline** showing extraction, indexing, retrieval, and API usage
-- **Evidence trace** from sentence → claim → agent query → evidence chunk
-- **Source provenance** for evidence layers and underlying analysis artifacts
-
----
-
-## Tech stack
-
-- **Next.js**
-- **TypeScript**
-- **Claude API**
-- **Tailwind CSS**
-- **Deterministic retrieval and verdict aggregation**
-- **Local TF-IDF fallback retrieval**
-- **Vercel deployment**
-
----
-
-## Running locally
-
-Clone the repository:
+### Installation
 
 ```bash
+# Clone the repository
 git clone https://github.com/rheazhou2026/geneground.git
 cd geneground
-```
 
-Install dependencies:
-
-```bash
+# Install dependencies
 npm install
-```
 
-Create a local environment file:
-
-```bash
+# Set up environment variables
 cp .env.example .env.local
 ```
 
-Add your Claude API key:
+Add your credentials to `.env.local`:
 
-```bash
-ANTHROPIC_API_KEY=your_key_here
-ANTHROPIC_MODEL=claude-sonnet-5
-NEXT_PUBLIC_GENEGROUND_USE_CLAUDE_API=true
+```env
+ANTHROPIC_API_KEY=your_anthropic_api_key_here
 ```
 
-Run the development server:
+### Run locally
 
 ```bash
 npm run dev
 ```
 
-Then open:
+Open [http://localhost:3000](http://localhost:3000) to view the app.
+
+### Build for production
 
 ```bash
-http://localhost:3000
+npm run build
+npm run start
 ```
 
----
+## Usage
 
-## Deployment
+1. **Upload or paste your analysis output** — a ranked gene table (CSV/TSV) with columns for gene symbol, effect size, p-value, FDR, perturbation label, and pathway annotation.
+2. **Paste the AI-generated interpretation** you want checked — the plain-language summary you'd otherwise drop straight into a paper or presentation.
+3. **(Optional) Attach a research handoff folder** — any supporting artifacts (perturbation results, pathway evidence, robustness/QC reports, provenance notes) that GeneGround's Artifact Discovery Agent can index as additional evidence.
+4. **Run GeneGround** — the pipeline parses your interpretation into claims, retrieves relevant evidence, runs all four evaluation agents, and returns a claim-by-claim grounding report alongside a fully rewritten, safer version of your interpretation.
+5. **Interact with the result** — select any sentence in the rewritten interpretation to inspect its evidence trail, ask a follow-up question, or request a rewrite. Every proposed change can be approved, edited, cancelled, or reverted.
 
-GeneGround is deployed on Vercel:
+## Project Structure
 
-```text
-https://geneground.vercel.app
+```
+geneground/
+├── app/                    # Next.js app router — pages & API routes
+│   ├── api/                # Backend endpoints (claim extraction, agent evaluation, chat)
+│   └── (routes)/           # UI routes: upload, report, evidence trace
+├── components/             # React components — claim cards, evidence viewer, chat panel
+├── lib/
+│   ├── agents/             # Four evaluation agents + prompt templates
+│   ├── ontology/           # HGNC / Reactome / Cell Ontology normalization helpers
+│   ├── retrieval/          # Artifact indexing + TF-IDF lexical vector search
+│   └── pipeline/           # Deterministic pipeline stages (steps 2–8, 10–11)
+├── public/                 # Static assets
+├── .env.example            # Environment variable template
+└── package.json
 ```
 
-For production deployment, set:
+## Demo Dataset
 
-```bash
-ANTHROPIC_API_KEY=your_key_here
-ANTHROPIC_MODEL=claude-sonnet-5
-NEXT_PUBLIC_GENEGROUND_USE_CLAUDE_API=true
-```
+GeneGround's initial demo and evaluation case uses the **T cell Perturb-seq dataset** from Gladstone Institutes and UCSF ([GEO: GSE278572](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE278572)) — a genome-scale CRISPR perturbation screen paired with single-cell RNA-seq across hundreds of thousands of T cells. This is exactly the kind of high-dimensional, high-stakes screen where researchers are most tempted to lean on LLMs for interpretation — and where a wrong "top regulator" call or a flipped direction of effect can send follow-up experiments in the wrong direction.
 
----
+## Roadmap
 
-## Project status
+- [ ] Extend claim-level grounding beyond Perturb-seq to bulk RNA-seq and proteomics workflows
+- [ ] Broaden ontology coverage (e.g., ChEBI, Gene Ontology) alongside HGNC/Reactome/Cell Ontology
+- [ ] Team/lab collaboration mode for shared review of grounding reports
+- [ ] Exportable, citation-complete grounding reports for inclusion in papers and grant appendices
+- [ ] Deeper Claude Science literature-grounding integration for automatic prior-art surfacing
 
-GeneGround is an MVP prototype built for the **Built with Claude: Life Sciences** hackathon. The current demo focuses on Perturb-seq claim grounding using a compact Claude Science evidence handoff.
+## Acknowledgments
 
-Future directions include:
-
-- literature grounding through scientific connectors
-- broader omics dataset support
-- richer evidence provenance
-- workspace-level saved runs
-- exportable audit reports for scientific review
-
----
+GeneGround was built for the **Built with Claude: Life Sciences** hackathon, extending the claim-level grounding and audit principles originally developed for [Vellum](https://github.com/rheazhou2026), an AI validation platform for clinical documentation, into life sciences research workflows. It is powered by [Claude Code and Claude Science](https://www.anthropic.com/news/claude-science-ai-workbench) and demoed on the Gladstone/UCSF T cell Perturb-seq dataset ([GSE278572](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE278572)), in the spirit of [Gladstone's Data Science and Biotechnology Institute](https://gladstone.org/science/data-science-and-biotechnology-institute) mission to turn data-rich experiments into useful biological knowledge.
 
 ## License
 
-MIT License
+This project is licensed under the [MIT License](./LICENSE).
+
+---
+
+Built by [Rhea Zhou](https://github.com/rheazhou2026) · [Live Demo](https://geneground.vercel.app) · [Demo Video](https://www.youtube.com/watch?v=aILeQ9WDXzs)
